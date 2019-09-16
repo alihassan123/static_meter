@@ -21,12 +21,91 @@ var vue_app_display = new Vue({
 			pm_cautions_and_errors_bit:false,
 			monthly_billing_data_bit:false,
 			cummulative_billing_bit:false,
-			instantaneous_bit:true,
+			instantaneous_bit:false,
 			load_profile_bit:false,
 			event_bit:false,
+			pm_default_parameters_bit:true,
+
+			mt:{
+				power_outage:{
+					value_in_secs:5,
+				},
+				ct_bypass:{
+					value_in_secs:5,
+				},
+				phase_fail:{
+					value_in_secs:5,
+				},
+				pt_bypass:{
+					value_in_secs:5,
+				},
+				over_voltage:{
+					value_in_secs:5,
+				},
+				imbalance_voltage:{
+					value_in_secs:5,
+				},
+				under_voltage:{
+					value_in_secs:5,
+				},
+				mdi_exceed:{
+					value_in_secs:5,
+				},
+				demand_overload:{
+					value_in_secs:5,
+				},
+				phase_sequence_change:{
+					value_in_secs:5,
+				},
+				reverse_energy_flow:{
+					value_in_secs:5,
+				},
+				tamper_energy:{
+					value_in_secs:5,
+				},
+				reverse_polarity:{
+					value_in_secs:5,
+				},
+				over_current:{
+					value_in_secs:5,
+				},
+			},
+			lm:{
+				over_voltage:{
+					value_in_unit:240,
+				},
+				reverse_energy:{
+					value_in_unit:0.001,
+				},
+				under_voltage:{
+					value_in_unit:0.001,
+				},
+				ct_current:{
+					value_in_unit:0.001,
+				},
+				demand_overload:{
+					value_in_unit:0.001,
+				},
+				pt_voltage:{
+					value_in_unit:0.001,
+				},
+				imbalance_voltage:{
+					value_in_unit:0.001,
+				},
+				mdi_exceed:{
+					value_in_unit:0.001,
+				},
+				over_current:{
+					value_in_unit:0.001,
+				},
+				tamper_energy:{
+					value_in_unit:0.001,
+				},
+			},
 	},
 	methods:{
 		init_all_bits:function(){
+			this.pm_default_parameters_bit=false;
 			this.pm_monitoring_time_bit=false;
 			this.pm_limit_bit=false;
 			this.pm_mdi_bit=false;
@@ -50,8 +129,23 @@ var vue_app_display = new Vue({
 			this.instantaneous_bit=false;
 			this.load_profile_bit=false;
 			this.event_bit=false;
-		}
-	}
+		},
+		error_checking:function(event){
+			console.log(event);
+			event.target.classList.remove('form-control-success','form-control-danger');
+			event.srcElement.parentElement.parentElement.classList.remove('has-success','has-danger');
+			if((parseInt(event.target.value) >= parseInt(event.srcElement.min)) && (parseInt(event.target.value) <= parseInt(event.srcElement.max)))
+			{
+				event.target.classList.add('form-control-success');
+				event.srcElement.parentElement.parentElement.classList.add('has-success');
+			}
+			else
+			{
+				event.target.classList.add('form-control-warning');
+				event.srcElement.parentElement.parentElement.classList.add('has-danger');
+			}
+		},
+	},
 })
 
 var vue_app_data_nav = new Vue({
@@ -152,6 +246,10 @@ var vue_app_data_nav = new Vue({
 			vue_app_display.init_all_bits();
 			vue_app_display.pm_cautions_and_errors_bit = true;
 		},
+		depr_on:function(){
+			vue_app_display.init_all_bits();
+			vue_app_display.pm_default_parameters_bit = true;
+		},
 	},
 })
 
@@ -226,6 +324,10 @@ function on(s){
 		case'ce':
 			vue_app_data_nav.ce_on();
 			break;
+		case 'depr':
+			vue_app_data_nav.depr_on();
+
 		default: return;
 	}
 }
+

@@ -31,6 +31,7 @@
     <link href="assets/demo/default/base/style.bundle.css" rel="stylesheet" type="text/css" />
     <!--end::Base Styles -->
     <link rel="shortcut icon" href="assets/demo/default/media/img/logo/favicon.ico" />
+    <link rel="stylesheet" type="text/css" href="main.css">
 </head>
 <!-- end::Head -->
 <!-- end::Body -->
@@ -2594,7 +2595,186 @@
 											<div class="m-portlet__body">
 												<!--begin::Widget5-->
 												<div class="m-widget4">
-													Ali Hassan
+                                                    <!--begin::Portlet-->
+                                                    <div class="m-portlet m-portlet--tab">
+                                                        <!--begin::Form-->
+                                                        <form class="m-form m-form--fit m-form--label-align-right">
+                                                            <div class="m-portlet__body">
+                                                                <div class="form-group m-form__group row">
+                                                                    <div class="col-6">
+                                                                        <div class="row">
+                                                                            <label for="mt_power_outage" class="col-5 col-form-label">
+                                                                                Power Outage
+                                                                            </label>
+                                                                            <div class="col-7">
+                                                                                <input class="form-control m-input" type="number" min="5" max="3600" v-on:click="error_checking" v-on:blur="error_checking" v-on:input="error_checking" v-on:keydown="error_checking" v-on:paste="error_checking" v-bind:value="mt.power_outage.value_in_secs" id="mt_power_outage">
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="col-6">
+                                                                        <div class="row">
+                                                                            <label for="mt_ct_bypass" class="col-5 col-form-label">
+                                                                                CT Bypass
+                                                                            </label>
+                                                                            <div class="col-7">
+                                                                                <input class="form-control m-input" type="number" min="5" max="3600" v-on:click="error_checking" v-on:blur="error_checking" v-on:input="error_checking" v-on:keydown="error_checking" v-on:paste="error_checking" v-bind:value="mt.ct_bypass.value_in_secs" id="mt_ct_bypass">
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="form-group m-form__group row">
+                                                                    <div class="col-6">
+                                                                        <div class="row">
+                                                                            <label for="mt_phase_fail" class="col-5 col-form-label">
+                                                                                Phase Fail
+                                                                            </label>
+                                                                            <div class="col-7">
+                                                                                <input class="form-control m-input" type="number" min="5" max="3600" v-on:click="error_checking" v-on:blur="error_checking" v-on:input="error_checking" v-on:keydown="error_checking" v-on:paste="error_checking" v-bind:value="mt.phase_fail.value_in_secs" id="mt_phase_fail">
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="col-6">
+                                                                        <div class="row">
+                                                                            <label for="mt_pt_bypass" class="col-5 col-form-label">
+                                                                                PT Bypass
+                                                                            </label>
+                                                                            <div class="col-7">
+                                                                                <input class="form-control m-input" type="number" min="5" max="3600" v-on:click="error_checking" v-on:blur="error_checking" v-on:input="error_checking" v-on:keydown="error_checking" v-on:paste="error_checking" v-bind:value="mt.pt_bypass.value_in_secs" id="mt_pt_bypass">
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="form-group m-form__group row">
+                                                                    <div class="col-6">
+                                                                        <div class="row">
+                                                                            <label for="mt_over_voltage" class="col-5 col-form-label">
+                                                                                Over Voltage
+                                                                            </label>
+                                                                            <div class="col-7">
+                                                                                <input class="form-control m-input" type="number" min="5" max="3600" v-on:click="error_checking" v-on:blur="error_checking" v-on:input="error_checking" v-on:keydown="error_checking" v-on:paste="error_checking" v-bind:value="mt.over_voltage.value_in_secs" id="mt_over_voltage">
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="col-6">
+                                                                        <div class="row">
+                                                                            <label for="mt_imbalance_voltage" class="col-5 col-form-label">
+                                                                                Imbalance Voltage
+                                                                            </label>
+                                                                            <div class="col-7">
+                                                                                <input class="form-control m-input" type="number" min="5" max="3600" v-on:click="error_checking" v-on:blur="error_checking" v-on:input="error_checking" v-on:keydown="error_checking" v-on:paste="error_checking" v-bind:value="mt.imbalance_voltage.value_in_secs" id="mt_imbalance_voltage">
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="form-group m-form__group row">
+                                                                    <div class="col-6">
+                                                                        <div class="row">
+                                                                            <label for="mt_under_voltage" class="col-5 col-form-label">
+                                                                                Under Voltage
+                                                                            </label>
+                                                                            <div class="col-7">
+                                                                                <input class="form-control m-input" type="number" min="5" max="3600" v-on:click="error_checking" v-on:blur="error_checking" v-on:input="error_checking" v-on:keydown="error_checking" v-on:paste="error_checking" v-bind:value="mt.under_voltage.value_in_secs" id="mt_under_voltage">
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="col-6">
+                                                                        <div class="row">
+                                                                            <label for="mt_mdi_exceed" class="col-5 col-form-label">
+                                                                                MDI Exceed
+                                                                            </label>
+                                                                            <div class="col-7">
+                                                                                <input class="form-control m-input" type="number" min="5" max="3600" v-on:click="error_checking" v-on:blur="error_checking" v-on:input="error_checking" v-on:keydown="error_checking" v-on:paste="error_checking" v-bind:value="mt.mdi_exceed.value_in_secs" id="mt_mdi_exceed">
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="form-group m-form__group row">
+                                                                    <div class="col-6">
+                                                                        <div class="row">
+                                                                            <label for="mt_demand_overload" class="col-5 col-form-label">
+                                                                                Demand Overload
+                                                                            </label>
+                                                                            <div class="col-7">
+                                                                                <input class="form-control m-input" type="number" min="5" max="3600" v-on:click="error_checking" v-on:blur="error_checking" v-on:input="error_checking" v-on:keydown="error_checking" v-on:paste="error_checking" v-bind:value="mt.demand_overload.value_in_secs" id="mt_demand_overload">
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="col-6">
+                                                                        <div class="row">
+                                                                            <label for="mt_phase_sequence_change" class="col-5 col-form-label">
+                                                                                Phase Sequence Change
+                                                                            </label>
+                                                                            <div class="col-7">
+                                                                                <input class="form-control m-input" type="number" min="5" max="3600" v-on:click="error_checking" v-on:blur="error_checking" v-on:input="error_checking" v-on:keydown="error_checking" v-on:paste="error_checking" v-bind:value="mt.phase_sequence_change.value_in_secs" id="mt_phase_sequence_change">
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="form-group m-form__group row">
+                                                                    <div class="col-6">
+                                                                        <div class="row">
+                                                                            <label for="mt_reverse_energy_flow" class="col-5 col-form-label">
+                                                                                Reverse Energy Flow
+                                                                            </label>
+                                                                            <div class="col-7">
+                                                                                <input class="form-control m-input" type="number" min="5" max="3600" v-on:click="error_checking" v-on:blur="error_checking" v-on:input="error_checking" v-on:keydown="error_checking" v-on:paste="error_checking" v-bind:value="mt.reverse_energy_flow.value_in_secs" id="mt_reverse_energy_flow">
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="col-6">
+                                                                        <div class="row">
+                                                                            <label for="mt_tamper_energy" class="col-5 col-form-label">
+                                                                                Tamper Energy
+                                                                            </label>
+                                                                            <div class="col-7">
+                                                                                <input class="form-control m-input" type="number" min="5" max="3600" v-on:click="error_checking" v-on:blur="error_checking" v-on:input="error_checking" v-on:keydown="error_checking" v-on:paste="error_checking" v-bind:value="mt.tamper_energy.value_in_secs" id="mt_tamper_energy">
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="form-group m-form__group row">
+                                                                    <div class="col-6">
+                                                                        <div class="row">
+                                                                            <label for="mt_reverse_polarity" class="col-5 col-form-label">
+                                                                                Reverse Polarity
+                                                                            </label>
+                                                                            <div class="col-7">
+                                                                                <input class="form-control m-input" type="number" min="5" max="3600" v-on:click="error_checking" v-on:blur="error_checking" v-on:input="error_checking" v-on:keydown="error_checking" v-on:paste="error_checking" v-bind:value="mt.reverse_polarity.value_in_secs" id="mt_reverse_polarity">
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="col-6">
+                                                                        <div class="row">
+                                                                            <label for="mt_over_current" class="col-5 col-form-label">
+                                                                                Over Current
+                                                                            </label>
+                                                                            <div class="col-7">
+                                                                                <input class="form-control m-input" type="number" min="5" max="3600" v-on:click="error_checking" v-on:blur="error_checking" v-on:input="error_checking" v-on:keydown="error_checking" v-on:paste="error_checking" v-bind:value="mt.over_current.value_in_secs" id="mt_over_current">
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="m-portlet__foot m-portlet__foot--fit">
+                                                                <div class="m-form__actions row">
+                                                                    <div class="col-3"></div>
+                                                                    <div class="col-3 m--align-center">
+                                                                        <button type="reset" class="btn btn-accent">
+                                                                            Read
+                                                                        </button>
+                                                                    </div>
+                                                                    <div class="col-3 m--align-center">
+                                                                        <button type="reset" class="btn btn-success">
+                                                                            Write
+                                                                        </button>
+                                                                    <div class="col-3"></div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </form>
+                                                        <!--end::Form-->
+                                                    </div>
+                                                    <!--end::Portlet-->
 												</div>
 												<!--end::Widget 5-->
 											</div>
@@ -2605,32 +2785,161 @@
 								<!--End::Main Portlet-->
                             </div>
                             <div v-if="pm_limit_bit">
-								<!--Begin::Main Portlet-->
-								<div class="row">
-									<div class="col-xl-12">
-										<!--begin:: Widgets/Top Products-->
-										<div class="m-portlet m-portlet--bordered-semi m-portlet--full-height ">
-											<div class="m-portlet__head">
-												<div class="m-portlet__head-caption">
-													<div class="m-portlet__head-title">
-														<h3 class="m-portlet__head-text">
-															Limits
-														</h3>
-													</div>
-												</div>
-											</div>
-											<div class="m-portlet__body">
-												<!--begin::Widget5-->
-												<div class="m-widget4">
-													Ali Hassan
-												</div>
-												<!--end::Widget 5-->
-											</div>
-										</div>
-										<!--end:: Widgets/Top Products-->
-									</div>
-								</div>
-								<!--End::Main Portlet-->
+                                        <!--begin:: Widgets/Top Products-->
+                                        <div class="m-portlet m-portlet--bordered-semi m-portlet--full-height ">
+                                            <div class="m-portlet__head">
+                                                <div class="m-portlet__head-caption">
+                                                    <div class="m-portlet__head-title">
+                                                        <h3 class="m-portlet__head-text">
+                                                            Limits
+                                                        </h3>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="m-portlet__body">
+                                                <!--begin::Widget5-->
+                                                <div class="m-widget4">
+                                                    <!--begin::Portlet-->
+                                                    <div class="m-portlet m-portlet--tab">
+                                                        <!--begin::Form-->
+                                                        <form class="m-form m-form--fit m-form--label-align-right">
+                                                            <div class="m-portlet__body">
+                                                                <div class="form-group m-form__group row">
+                                                                    <div class="col-6">
+                                                                        <div class="row">
+                                                                            <label for="lm_over_voltage" class="col-5 col-form-label">
+                                                                                Over Voltage
+                                                                            </label>
+                                                                            <div class="col-7">
+                                                                                <input class="form-control m-input" type="number" min="50" step="0.01" max="300" v-on:click="error_checking" v-on:blur="error_checking" v-on:input="error_checking" v-on:keydown="error_checking" v-on:paste="error_checking" v-bind:value="lm.over_voltage.value_in_unit" id="lm_over_voltage">
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="col-6">
+                                                                        <div class="row">
+                                                                            <label for="lm_reverse_energy" class="col-5 col-form-label">
+                                                                                Reverse Energy
+                                                                            </label>
+                                                                            <div class="col-7">
+                                                                                <input class="form-control m-input" type="number" min="0.1" step="0.01" max="20" v-on:click="error_checking" v-on:blur="error_checking" v-on:input="error_checking" v-on:keydown="error_checking" v-on:paste="error_checking" v-bind:value="lm.reverse_energy.value_in_unit" id="lm_reverse_energy">
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="form-group m-form__group row">
+                                                                    <div class="col-6">
+                                                                        <div class="row">
+                                                                            <label for="lm_under_voltage" class="col-5 col-form-label">
+                                                                                Under Voltage
+                                                                            </label>
+                                                                            <div class="col-7">
+                                                                                <input class="form-control m-input" type="number" min="50" step="0.01" max="230" v-on:click="error_checking" v-on:blur="error_checking" v-on:input="error_checking" v-on:keydown="error_checking" v-on:paste="error_checking" v-bind:value="lm.under_voltage.value_in_unit" id="lm_under_voltage">
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="col-6">
+                                                                        <div class="row">
+                                                                            <label for="lm_ct_current" class="col-5 col-form-label">
+                                                                                CT Current
+                                                                            </label>
+                                                                            <div class="col-7">
+                                                                                <input class="form-control m-input" type="number" min="10" step="0.01" max="300" v-on:click="error_checking" v-on:blur="error_checking" v-on:input="error_checking" v-on:keydown="error_checking" v-on:paste="error_checking" v-bind:value="lm.ct_current.value_in_unit" id="lm_ct_current">
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="form-group m-form__group row">
+                                                                    <div class="col-6">
+                                                                        <div class="row">
+                                                                            <label for="lm_demand_overload" class="col-5 col-form-label">
+                                                                                Demand Overload
+                                                                            </label>
+                                                                            <div class="col-7">
+                                                                                <input class="form-control m-input" type="number" min="0.1" step="0.01" max="69" v-on:click="error_checking" v-on:blur="error_checking" v-on:input="error_checking" v-on:keydown="error_checking" v-on:paste="error_checking" v-bind:value="lm.demand_overload.value_in_unit" id="lm_demand_overload">
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="col-6">
+                                                                        <div class="row">
+                                                                            <label for="lm_pt_voltage" class="col-5 col-form-label">
+                                                                                PT Voltage
+                                                                            </label>
+                                                                            <div class="col-7">
+                                                                                <input class="form-control m-input" type="number" min="2.00" step="0.01" max="230" v-on:click="error_checking" v-on:blur="error_checking" v-on:input="error_checking" v-on:keydown="error_checking" v-on:paste="error_checking" v-bind:value="lm.pt_voltage.value_in_unit" id="lm_pt_voltage">
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="form-group m-form__group row">
+                                                                    <div class="col-6">
+                                                                        <div class="row">
+                                                                            <label for="lm_imbalance_voltage" class="col-5 col-form-label">
+                                                                                Imbalance Voltage
+                                                                            </label>
+                                                                            <div class="col-7">
+                                                                                <input class="form-control m-input" type="number" min="2.00" step="0.01" max="230" v-on:click="error_checking" v-on:blur="error_checking" v-on:input="error_checking" v-on:keydown="error_checking" v-on:paste="error_checking" v-bind:value="lm.imbalance_voltage.value_in_unit" id="lm_imbalance_voltage">
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="col-6">
+                                                                        <div class="row">
+                                                                            <label for="lm_mdi_exceed" class="col-5 col-form-label">
+                                                                                MDI Exceed
+                                                                            </label>
+                                                                            <div class="col-7">
+                                                                                <input class="form-control m-input" type="number" min="0.1" step="0.01" max="100" v-on:click="error_checking" v-on:blur="error_checking" v-on:input="error_checking" v-on:keydown="error_checking" v-on:paste="error_checking" v-bind:value="lm.mdi_exceed.value_in_unit" id="lm_mdi_exceed">
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="form-group m-form__group row">
+                                                                    <div class="col-6">
+                                                                        <div class="row">
+                                                                            <label for="lm_over_current" class="col-5 col-form-label">
+                                                                                Over Current
+                                                                            </label>
+                                                                            <div class="col-7">
+                                                                                <input class="form-control m-input" type="number" min="0.2" step="0.01" max="100" v-on:click="error_checking" v-on:blur="error_checking" v-on:input="error_checking" v-on:keydown="error_checking" v-on:paste="error_checking" v-bind:value="lm.over_current.value_in_unit" id="lm_over_current">
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="col-6">
+                                                                        <div class="row">
+                                                                            <label for="lm_tamper_energy" class="col-5 col-form-label">
+                                                                                Tamper Energy
+                                                                            </label>
+                                                                            <div class="col-7">
+                                                                                <input class="form-control m-input" type="number" min="0.1" step="0.01" max="20" v-on:click="error_checking" v-on:blur="error_checking" v-on:input="error_checking" v-on:keydown="error_checking" v-on:paste="error_checking" v-bind:value="lm.tamper_energy.value_in_unit" id="lm_tamper_energy">
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="m-portlet__foot m-portlet__foot--fit">
+                                                                <div class="m-form__actions row">
+                                                                    <div class="col-3"></div>
+                                                                    <div class="col-3 m--align-center">
+                                                                        <button type="reset" class="btn btn-accent">
+                                                                            Read
+                                                                        </button>
+                                                                    </div>
+                                                                    <div class="col-3 m--align-center">
+                                                                        <button type="reset" class="btn btn-success">
+                                                                            Write
+                                                                        </button>
+                                                                    <div class="col-3"></div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </form>
+                                                        <!--end::Form-->
+                                                    </div>
+                                                    <!--end::Portlet-->
+                                                </div>
+                                                <!--end::Widget 5-->
+                                            </div>
+                                        </div>
+                                        <!--end:: Widgets/Top Products-->
                             </div>                                
                             <div v-if="pm_mdi_bit">
 								<!--Begin::Main Portlet-->
@@ -3220,6 +3529,86 @@
 								</div>
 								<!--End::Main Portlet-->
                             </div>                                
+                            <div v-if="pm_default_parameters_bit">
+                                <!--Begin::Main Portlet-->
+                                <div class="row">
+                                    <div class="col-xl-12">
+                                        <!--begin:: Widgets/Top Products-->
+                                        <div class="m-portlet m-portlet--bordered-semi m-portlet--full-height ">
+                                            <div class="m-portlet__head">
+                                                <div class="m-portlet__head-caption">
+                                                    <div class="m-portlet__head-title">
+                                                        <h3 class="m-portlet__head-text">
+                                                            Default Parameters
+                                                        </h3>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="m-portlet__body">
+                                                <!--begin::Widget5-->
+                                                <div class="m-widget4">
+                                                    <!--begin::Portlet-->
+                                                    <div class="m-portlet m-portlet--tab">
+                                                        <div class="m-portlet__head">
+                                                            <div class="m-portlet__head-caption">
+                                                                <div class="m-portlet__head-title">
+                                                                    <span class="m-portlet__head-icon m--hide">
+                                                                        <i class="la la-gear"></i>
+                                                                    </span>
+                                                                    <h3 class="m-portlet__head-text">
+                                                                        Default Parameters Upload
+                                                                    </h3>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <!--begin::Form-->
+                                                        <form class="m-form m-form--fit m-form--label-align-right">
+                                                            <div class="m-portlet__body">
+                                                                <div class="row">
+                                                                    <div class="col-6">
+                                                                        <div class="form-group m-form__group">
+                                                                            <label for="new_default_parameters">
+                                                                                Default Parameters Name
+                                                                            </label>
+                                                                            <input type="text" class="form-control m-input" id="new_default_parameters" aria-describedby="emailHelp" placeholder="Default input">
+                                                                        </div>                                                                                                                                            
+                                                                    </div>
+                                                                    <div class="col-6"></div>
+                                                                </div>
+                                                                <div class="form-group m-form__group">
+                                                                    <label for="file2">
+                                                                        Select <code>.csv</code> file to upload default parameters
+                                                                    </label>
+                                                                    <div></div>
+                                                                    <label class="custom-file">
+                                                                        <input type="file" id="file2" class="custom-file-input" style="min-width: 100rem">
+                                                                        <span class="custom-file-control"></span>
+                                                                    </label>
+                                                                </div>
+                                                            </div>
+                                                            <div class="m-portlet__foot m-portlet__foot--fit">
+                                                                <div class="m-form__actions">
+                                                                    <button type="reset" class="btn btn-primary">
+                                                                        Save
+                                                                    </button>
+                                                                    <button type="reset" class="btn btn-secondary">
+                                                                        Cancel
+                                                                    </button>
+                                                                </div>
+                                                            </div>
+                                                        </form>
+                                                        <!--end::Form-->
+                                                    </div>
+                                                    <!--end::Portlet-->
+                                                </div>
+                                                <!--end::Widget 5-->
+                                            </div>
+                                        </div>
+                                        <!--end:: Widgets/Top Products-->
+                                    </div>
+                                </div>
+                                <!--End::Main Portlet-->
+                            </div>                                
                         </div>
                     </div>
                 </div>
@@ -3361,44 +3750,42 @@
                                         <div class="m-portlet__body">
                                             <div class="m_tree_1 tree-demo">
                                                 <ul>
-                                                    <li data-jstree='{ "opened" : true }'>Paramerters
+                                                    <li data-jstree='{ "opened" : true }'>Parameters
                                                         <ul>
+                                                            <li data-jstree='{ "icon" : "fa fa-file-o" }' onclick="on('depr')">Default Parameters</li>
                                                             <li data-jstree='{ "opened" : true }'>
                                                                 General
                                                                 <ul>
-                                                                    <li data-jstree='{ "icon" : "flaticon-time-1" }' onclick="on('mt')">
-                                                                        <a href="#">Monitoring Time</a>
-                                                                    </li>
-                                                                    <li data-jstree='{ "icon" : "flaticon-interface-3" }'  onclick="on('lm')">
-                                                                        <a href="#">Limit</a>
-                                                                    </li>
+                                                                    <li data-jstree='{ "icon" : "flaticon-time-1" }' onclick="on('mt')">Monitoring Time</li>
+                                                                    <li data-jstree='{ "icon" : "flaticon-interface-3" }'  onclick="on('lm')">Limit</li>
                                                                     <li data-jstree='{ "icon" : "flaticon-up-arrow-1" }' onclick="on('md')">MDI</li>
                                                                     <li data-jstree='{ "icon" : "flaticon-graphic-2" }' onclick="on('lp')">Load Profile</li>
                                                                     <li data-jstree='{ "icon" : "flaticon-clock-1" }' onclick="on('cc')">Clock Calibration</li>
                                                                     <li data-jstree='{ "icon" : "fa fa-bullseye" }' onclick="on('dp')">Decimal Point</li>
-                                                                    <li onclick="on('ep')">Energy</li>
+                                                                    <li data-jstree='{ "icon" : "fa fa-file-o" }' onclick="on('ep')">Energy</li>
                                                                 </ul>
                                                             </li>
                                                             <li data-jstree='{ "opened" : true }'>
                                                                 Seasons
                                                                 <ul>
-                                                                    <li onclick="on('ss')">Seasons Settings</li>
-                                                                    <li data-jstree='{ "opened" : true }' onclick="on('ts')">
-                                                                        Tariff Setting
+                                                                    <li data-jstree='{ "icon" : "fa fa-file-o" }' onclick="on('ss')">Seasons Settings</li>
+                                                                    <li data-jstree='{ "icon" : "fa fa-file-o" }' onclick="on('ts')">Tariff Settings</li>
+                                                                    <li data-jstree='{ "opened" : true }'>
+                                                                        Tariffs of Seasons
                                                                         <ul>
-                                                                            <li onclick="on('sa')">Season A</li>
-                                                                            <li onclick="on('sb')">Season B</li>
-                                                                            <li onclick="on('sc')">Season C</li>
-                                                                            <li onclick="on('sd')">Season D</li>
+                                                                            <li data-jstree='{ "icon" : "fa fa-file-o" }' onclick="on('sa')">Season A</li>
+                                                                            <li data-jstree='{ "icon" : "fa fa-file-o" }' onclick="on('sb')">Season B</li>
+                                                                            <li data-jstree='{ "icon" : "fa fa-file-o" }' onclick="on('sc')">Season C</li>
+                                                                            <li data-jstree='{ "icon" : "fa fa-file-o" }' onclick="on('sd')">Season D</li>
                                                                         </ul>
                                                                     </li>
-                                                                    <li onclick="on('cs')">Calender Setting</li>
+                                                                    <li data-jstree='{ "icon" : "fa fa-file-o" }' onclick="on('cs')">Calender Setting</li>
                                                                 </ul>
                                                             </li>
-                                                            <li onclick="on('dw')">Display Windows</li>
-                                                            <li onclick="on('po')">Power Off Display</li>
-                                                            <li onclick="on('ps')">Password</li>
-                                                            <li onclick="on('ce')">Cautions and Errors</li>
+                                                            <li data-jstree='{ "icon" : "fa fa-file-o" }' onclick="on('dw')">Display Windows</li>
+                                                            <li data-jstree='{ "icon" : "fa fa-file-o" }' onclick="on('po')">Power Off Display</li>
+                                                            <li data-jstree='{ "icon" : "fa fa-file-o" }' onclick="on('ps')">Password</li>
+                                                            <li data-jstree='{ "icon" : "fa fa-file-o" }' onclick="on('ce')">Cautions and Errors</li>
                                                         </ul>
                                                     </li>
                                                 </ul>
