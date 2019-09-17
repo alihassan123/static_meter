@@ -21,10 +21,10 @@ var vue_app_display = new Vue({
 			pm_cautions_and_errors_bit:false,
 			monthly_billing_data_bit:false,
 			cummulative_billing_bit:false,
-			instantaneous_bit:false,
+			instantaneous_bit:true,
 			load_profile_bit:false,
 			event_bit:false,
-			pm_default_parameters_bit:true,
+			pm_default_parameters_bit:false,
 
 			mt:{
 				power_outage:{
