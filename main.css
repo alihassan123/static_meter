@@ -1,3 +1,11 @@
 .m-input{
 	text-align: center;
 }
+
+.m-datatable tbody tr td:nth-child(2){
+	text-align: center;
+}
+
+.m-datatable tbody tr td:nth-child(1){
+	padding-left: 50px !important;
+}
