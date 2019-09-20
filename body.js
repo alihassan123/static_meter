@@ -102,24 +102,25 @@ var vue_app_display = new Vue({
 					value_in_unit:0.001,
 				},
 			},
+
 			inst:{
-				voltage_v_phase_a:{
+				voltage_phase_a:{
 					value:0.0,
 					unit:"",
 				},
-				current_a_phase_a:{
+				current_phase_a:{
 					value:0.0,
 					unit:"",
 				},
-				active_power_kw_phase_a:{
+				active_power_phase_a:{
 					value:0.0,
 					unit:"",
 				},
-				reactive_power_kvar_phase_a:{
+				reactive_power_phase_a:{
 					value:0.0,
 					unit:"",
 				},
-				apparent_power_kva_phase_a:{
+				apparent_power_phase_a:{
 					value:0.0,
 					unit:"",
 				},
@@ -127,27 +128,27 @@ var vue_app_display = new Vue({
 					value:0.0,
 					unit:"",
 				},
-				power_quandrant_phase_a:{
+				power_quadrant_phase_a:{
 					value:0.0,
 					unit:"",
 				},
-				voltage_v_phase_b:{
+				voltage_phase_b:{
 					value:0.0,
 					unit:"",
 				},
-				current_a_phase_b:{
+				current_phase_b:{
 					value:0.0,
 					unit:"",
 				},
-				active_power_kw_phase_b:{
+				active_power_phase_b:{
 					value:0.0,
 					unit:"",
 				},
-				reactive_power_kvar_phase_b:{
+				reactive_power_phase_b:{
 					value:0.0,
 					unit:"",
 				},
-				apparent_power_kva_phase_b:{
+				apparent_power_phase_b:{
 					value:0.0,
 					unit:"",
 				},
@@ -155,27 +156,27 @@ var vue_app_display = new Vue({
 					value:0.0,
 					unit:"",
 				},
-				power_quandrant_phase_b:{
+				power_quadrant_phase_b:{
 					value:0.0,
 					unit:"",
 				},
-				voltage_v_phase_c:{
+				voltage_phase_c:{
 					value:0.0,
 					unit:"",
 				},
-				current_a_phase_c:{
+				current_phase_c:{
 					value:0.0,
 					unit:"",
 				},
-				active_power_kw_phase_c:{
+				active_power_phase_c:{
 					value:0.0,
 					unit:"",
 				},
-				reactive_power_kvar_phase_c:{
+				reactive_power_phase_c:{
 					value:0.0,
 					unit:"",
 				},
-				apparent_power_kva_phase_c:{
+				apparent_power_phase_c:{
 					value:0.0,
 					unit:"",
 				},
@@ -183,143 +184,143 @@ var vue_app_display = new Vue({
 					value:0.0,
 					unit:"",
 				},
-				power_quandrant_phase_c:{
+				power_quadrant_phase_c:{
 					value:0.0,
 					unit:"",
 				},
-				voltage_v_total_avg:{
+				current_all_phases:{
 					value:0.0,
 					unit:"",
 				},
-				current_a_total_avg:{
+				active_power_all_phases:{
 					value:0.0,
 					unit:"",
 				},
-				active_power_kw_total_avg:{
+				reactive_power_all_phases:{
 					value:0.0,
 					unit:"",
 				},
-				reactive_power_kvar_total_avg:{
+				apparent_power_all_phases:{
 					value:0.0,
 					unit:"",
 				},
-				apparent_power_kva_total_avg:{
+				power_factor_all_phases:{
 					value:0.0,
 					unit:"",
 				},
-				power_factor_total_avg:{
+				power_quadrant_all_phases:{
 					value:0.0,
 					unit:"",
 				},
-				power_quandrant_total_avg:{
+				active_current_month_mdi_t_1:{
 					value:0.0,
 					unit:"",
 				},
-				current_month_mdi_kw_tariff_1:{
+				reactive_current_month_mdi_t_1:{
 					value:0.0,
 					unit:"",
 				},
-				current_month_mdi_kvar_tariff_1:{
+				active_current_month_mdi_t_2:{
 					value:0.0,
 					unit:"",
 				},
-				current_month_mdi_kw_tariff_2:{
+				reactive_current_month_mdi_t_2:{
 					value:0.0,
 					unit:"",
 				},
-				current_month_mdi_kvar_tariff_2:{
+				active_current_month_mdi_t_3:{
 					value:0.0,
 					unit:"",
 				},
-				current_month_mdi_kw_tariff_3:{
+				reactive_current_month_mdi_t_3:{
 					value:0.0,
 					unit:"",
 				},
-				current_month_mdi_kvar_tariff_3:{
+				active_current_month_mdi_t_4:{
 					value:0.0,
 					unit:"",
 				},
-				current_month_mdi_kw_tariff_4:{
+				reactive_current_month_mdi_t_4:{
 					value:0.0,
 					unit:"",
 				},
-				current_month_mdi_kvar_tariff_4:{
+				active_current_month_mdi_t_L:{
 					value:0.0,
 					unit:"",
 				},
-				current_month_mdi_kw_tariff_l:{
+				meter_date:{
 					value:0.0,
 					unit:"",
 				},
-				current_month_mdi_kvar_tariff_l:{
+				meter_time:{
 					value:0.0,
 					unit:"",
 				},
-				active_mdi_kw_slide_1:{
+				mdi_reset_count:{
 					value:0.0,
 					unit:"",
 				},
-				active_mdi_kw_import_slide_1:{
+				season:{
 					value:0.0,
 					unit:"",
 				},
-				active_mdi_kw_export_slide_1:{
+				tariff:{
 					value:0.0,
 					unit:"",
 				},
-				reactive_mdi_kvar_slide_1:{
+				frequency:{
 					value:0.0,
 					unit:"",
 				},
-				reactive_mdi_kvar_import_slide_1:{
+				time_interval_left:{
 					value:0.0,
 					unit:"",
 				},
-				reactive_mdi_kvar_export_slide_1:{
+				last_interval_mdi_kw:{
 					value:0.0,
 					unit:"",
 				},
-				active_mdi_kw_slide_2:{
+				last_interval_mdi_import_kw:{
 					value:0.0,
 					unit:"",
 				},
-				active_mdi_kw_import_slide_2:{
+				last_interval_mdi_export_kw:{
 					value:0.0,
 					unit:"",
 				},
-				active_mdi_kw_export_slide_2:{
+				tamper_power:{
 					value:0.0,
 					unit:"",
 				},
-				reactive_mdi_kvar_slide_2:{
+				last_interval_mdi_kvar:{
 					value:0.0,
 					unit:"",
 				},
-				reactive_mdi_kvar_import_slide_2:{
+				last_interval_mdi_import_kvar:{
 					value:0.0,
 					unit:"",
 				},
-				reactive_mdi_kvar_export_slide_2:{
+				last_interval_mdi_export_kvar:{
 					value:0.0,
 					unit:"",
 				},
-				active_mdi_kw_slide_3:{
+				counter:{
 					value:0.0,
 					unit:"",
 				},
-				active_mdi_kw_import_slide_3:{
+				slide_count:{
 					value:0.0,
 					unit:"",
 				},
-				active_mdi_kw_export_slide_3:{
+				slide_counter:{
 					value:0.0,
 					unit:"",
 				},
-				reactive_mdi_kvar_slide_3:{
+				time_period:{
 					value:0.0,
 					unit:"",
 				},
-				reactive_mdi_kvar_import_slide_3:{
+				time_span_index:{
 					value:0.0,
 					unit:"",
 				},
