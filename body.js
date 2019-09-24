@@ -1,3 +1,7 @@
+import VueResource from 'vue-resource'
+
+Vue.use(VueResource);
+
 var vue_app_display = new Vue({
 	el:"#vue_app_display",
 	data:{
