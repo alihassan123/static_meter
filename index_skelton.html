@@ -1,0 +1,1815 @@
+<!DOCTYPE html>
+<html lang="en">
+<!-- begin::Head -->
+
+<head>
+    <meta charset="utf-8" />
+    <title>
+        Metronic | Dashboard
+    </title>
+    <meta name="description" content="Latest updates and statistic charts">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!--begin::Web font -->
+<!-- 
+    <script src="https://cdn.bootcss.com/webfont/1.6.16/webfontloader.js"></script>
+    <script>
+    WebFont.load({
+        google: {
+            "families": ["Poppins:300,400,500,600,700", "Roboto:300,400,500,600,700"]
+        },
+        active: function() {
+            sessionStorage.fonts = true;
+        }
+    });
+    </script>
+ -->
+    <!--end::Web font -->
+    <!--begin::Base Styles -->
+    <!--begin::Page Vendors -->
+    <link href="assets/vendors/custom/fullcalendar/fullcalendar.bundle.css" rel="stylesheet" type="text/css" />
+    <!--end::Page Vendors -->
+    <link href="assets/vendors/base/vendors.bundle.css" rel="stylesheet" type="text/css" />
+    <link href="assets/demo/default/base/style.bundle.css" rel="stylesheet" type="text/css" />
+    <!--end::Base Styles -->
+    <link rel="shortcut icon" href="assets/demo/default/media/img/logo/favicon.ico" />
+    <link rel="stylesheet" type="text/css" href="main.css">
+</head>
+<!-- end::Head -->
+<!-- end::Body -->
+
+<body class="m-page--fluid m--skin- m-content--skin-light2 m-header--fixed m-header--fixed-mobile m-aside-left--enabled m-aside-left--skin-dark m-aside-left--offcanvas m-footer--push m-aside--offcanvas-default">
+
+
+    <div class="row">
+        
+        <div class="col-md-3 col-lg-2">
+            <div id="vue_app_data_nav">
+                <div class="m_tree_1 tree-demo">
+                    <ul>
+                        <li data-jstree='{ "opened" : true }'>Meter Data
+                            <ul>
+                                <li onclick="on('mb')">Monthly Billing</li>
+                                <li onclick="on('cb')">Cummulative Billing</li>
+                                <li onclick="on('in')">Instantaneous</li>
+                                <li onclick="on('lps')">Load Profile</li>
+                                <li onclick="on('ev')">Events</li>
+                            </ul>
+                        </li>
+                        <li data-jstree='{"opened" : true }'>Parameters
+                            <ul>
+                                <li onclick="on('depr')">Default Parameters</li>
+                                <li onclick="on('mt')">Monitoring Time</li>
+                                <li onclick="on('lm')">Limit</li>
+                                <li onclick="on('md')">MDI</li>
+                                <li onclick="on('lp')">Load Profile</li>
+                                <li onclick="on('cc')">Clock Calibration</li>
+                                <li onclick="on('dp')">Decimal Point</li>
+                                <li onclick="on('ep')">Energy</li>
+                                <li onclick="on('ss')">Seasons Settings</li>
+                                <li onclick="on('ts')">Tariff Settings</li>
+                                <li onclick="on('sa')">Season A</li>
+                                <li onclick="on('sb')">Season B</li>
+                                <li onclick="on('sc')">Season C</li>
+                                <li onclick="on('sd')">Season D</li>
+                                <li onclick="on('cs')">Calender Setting</li>
+                                <li onclick="on('dw')">Display Windows</li>
+                                <li onclick="on('po')">Power Off Display</li>
+                                <li onclick="on('ps')">Password</li>
+                                <li onclick="on('ce')">Cautions and Errors</li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-9 col-lg-10">
+            <div id="vue_app_display">
+                <div v-if="pm_monitoring_time_bit">
+                    <!--begin::Form-->
+                    MT<br>
+                    <form>
+                        <div class="m-portlet__body">
+                            <div class="form-group m-form__group row">
+                                <div class="col-6">
+                                    <div class="row">
+                                        <label for="mt_power_outage">
+                                            Power Outage
+                                        </label>
+                                        <div class="col-7">
+                                            <input class="form-control m-input" type="number" min="5" max="3600" v-on:click="error_checking" v-on:blur="error_checking" v-on:input="error_checking" v-on:keydown="error_checking" v-on:paste="error_checking" v-bind:value="mt.power_outage.value_in_secs" id="mt_power_outage">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-6">
+                                    <div class="row">
+                                        <label for="mt_ct_bypass">
+                                            CT Bypass
+                                        </label>
+                                        <div class="col-7">
+                                            <input class="form-control m-input" type="number" min="5" max="3600" v-on:click="error_checking" v-on:blur="error_checking" v-on:input="error_checking" v-on:keydown="error_checking" v-on:paste="error_checking" v-bind:value="mt.ct_bypass.value_in_secs" id="mt_ct_bypass">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group m-form__group row">
+                                <div class="col-6">
+                                    <div class="row">
+                                        <label for="mt_phase_fail">
+                                            Phase Fail
+                                        </label>
+                                        <div class="col-7">
+                                            <input class="form-control m-input" type="number" min="5" max="3600" v-on:click="error_checking" v-on:blur="error_checking" v-on:input="error_checking" v-on:keydown="error_checking" v-on:paste="error_checking" v-bind:value="mt.phase_fail.value_in_secs" id="mt_phase_fail">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-6">
+                                    <div class="row">
+                                        <label for="mt_pt_bypass">
+                                            PT Bypass
+                                        </label>
+                                        <div class="col-7">
+                                            <input class="form-control m-input" type="number" min="5" max="3600" v-on:click="error_checking" v-on:blur="error_checking" v-on:input="error_checking" v-on:keydown="error_checking" v-on:paste="error_checking" v-bind:value="mt.pt_bypass.value_in_secs" id="mt_pt_bypass">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group m-form__group row">
+                                <div class="col-6">
+                                    <div class="row">
+                                        <label for="mt_over_voltage">
+                                            Over Voltage
+                                        </label>
+                                        <div class="col-7">
+                                            <input class="form-control m-input" type="number" min="5" max="3600" v-on:click="error_checking" v-on:blur="error_checking" v-on:input="error_checking" v-on:keydown="error_checking" v-on:paste="error_checking" v-bind:value="mt.over_voltage.value_in_secs" id="mt_over_voltage">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-6">
+                                    <div class="row">
+                                        <label for="mt_imbalance_voltage">
+                                            Imbalance Voltage
+                                        </label>
+                                        <div class="col-7">
+                                            <input class="form-control m-input" type="number" min="5" max="3600" v-on:click="error_checking" v-on:blur="error_checking" v-on:input="error_checking" v-on:keydown="error_checking" v-on:paste="error_checking" v-bind:value="mt.imbalance_voltage.value_in_secs" id="mt_imbalance_voltage">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group m-form__group row">
+                                <div class="col-6">
+                                    <div class="row">
+                                        <label for="mt_under_voltage">
+                                            Under Voltage
+                                        </label>
+                                        <div class="col-7">
+                                            <input class="form-control m-input" type="number" min="5" max="3600" v-on:click="error_checking" v-on:blur="error_checking" v-on:input="error_checking" v-on:keydown="error_checking" v-on:paste="error_checking" v-bind:value="mt.under_voltage.value_in_secs" id="mt_under_voltage">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-6">
+                                    <div class="row">
+                                        <label for="mt_mdi_exceed">
+                                            MDI Exceed
+                                        </label>
+                                        <div class="col-7">
+                                            <input class="form-control m-input" type="number" min="5" max="3600" v-on:click="error_checking" v-on:blur="error_checking" v-on:input="error_checking" v-on:keydown="error_checking" v-on:paste="error_checking" v-bind:value="mt.mdi_exceed.value_in_secs" id="mt_mdi_exceed">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group m-form__group row">
+                                <div class="col-6">
+                                    <div class="row">
+                                        <label for="mt_demand_overload">
+                                            Demand Overload
+                                        </label>
+                                        <div class="col-7">
+                                            <input class="form-control m-input" type="number" min="5" max="3600" v-on:click="error_checking" v-on:blur="error_checking" v-on:input="error_checking" v-on:keydown="error_checking" v-on:paste="error_checking" v-bind:value="mt.demand_overload.value_in_secs" id="mt_demand_overload">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-6">
+                                    <div class="row">
+                                        <label for="mt_phase_sequence_change">
+                                            Phase Sequence Change
+                                        </label>
+                                        <div class="col-7">
+                                            <input class="form-control m-input" type="number" min="5" max="3600" v-on:click="error_checking" v-on:blur="error_checking" v-on:input="error_checking" v-on:keydown="error_checking" v-on:paste="error_checking" v-bind:value="mt.phase_sequence_change.value_in_secs" id="mt_phase_sequence_change">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group m-form__group row">
+                                <div class="col-6">
+                                    <div class="row">
+                                        <label for="mt_reverse_energy_flow">
+                                            Reverse Energy Flow
+                                        </label>
+                                        <div class="col-7">
+                                            <input class="form-control m-input" type="number" min="5" max="3600" v-on:click="error_checking" v-on:blur="error_checking" v-on:input="error_checking" v-on:keydown="error_checking" v-on:paste="error_checking" v-bind:value="mt.reverse_energy_flow.value_in_secs" id="mt_reverse_energy_flow">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-6">
+                                    <div class="row">
+                                        <label for="mt_tamper_energy">
+                                            Tamper Energy
+                                        </label>
+                                        <div class="col-7">
+                                            <input class="form-control m-input" type="number" min="5" max="3600" v-on:click="error_checking" v-on:blur="error_checking" v-on:input="error_checking" v-on:keydown="error_checking" v-on:paste="error_checking" v-bind:value="mt.tamper_energy.value_in_secs" id="mt_tamper_energy">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group m-form__group row">
+                                <div class="col-6">
+                                    <div class="row">
+                                        <label for="mt_reverse_polarity">
+                                            Reverse Polarity
+                                        </label>
+                                        <div class="col-7">
+                                            <input class="form-control m-input" type="number" min="5" max="3600" v-on:click="error_checking" v-on:blur="error_checking" v-on:input="error_checking" v-on:keydown="error_checking" v-on:paste="error_checking" v-bind:value="mt.reverse_polarity.value_in_secs" id="mt_reverse_polarity">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-6">
+                                    <div class="row">
+                                        <label for="mt_over_current">
+                                            Over Current
+                                        </label>
+                                        <div class="col-7">
+                                            <input class="form-control m-input" type="number" min="5" max="3600" v-on:click="error_checking" v-on:blur="error_checking" v-on:input="error_checking" v-on:keydown="error_checking" v-on:paste="error_checking" v-bind:value="mt.over_current.value_in_secs" id="mt_over_current">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="m-portlet__foot m-portlet__foot--fit">
+                            <div class="m-form__actions row">
+                                <div class="col-3"></div>
+                                <div class="col-3 m--align-center">
+                                    <button type="reset" class="btn btn-accent">
+                                        Read
+                                    </button>
+                                </div>
+                                <div class="col-3 m--align-center">
+                                    <button type="reset" class="btn btn-success">
+                                        Write
+                                    </button>
+                                <div class="col-3"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                    <!--end::Form-->
+                </div>
+                <div v-if="pm_limit_bit">
+                    <!--begin::Form-->
+                    LM<br>
+                    <form>
+
+                        <label for="lm_over_voltage">
+                            Over Voltage
+                        </label>
+                        <input type="number" min="50" step="0.01" max="300" v-on:click="error_checking" v-on:blur="error_checking" v-on:input="error_checking" v-on:keydown="error_checking" v-on:paste="error_checking" v-bind:value="lm.over_voltage.value_in_unit" id="lm_over_voltage">
+
+
+                        <label for="lm_reverse_energy">
+                            Reverse Energy
+                        </label>
+                        <input type="number" min="0.1" step="0.01" max="20" v-on:click="error_checking" v-on:blur="error_checking" v-on:input="error_checking" v-on:keydown="error_checking" v-on:paste="error_checking" v-bind:value="lm.reverse_energy.value_in_unit" id="lm_reverse_energy">
+
+
+                        <label for="lm_under_voltage">
+                            Under Voltage
+                        </label>
+                        <input type="number" min="50" step="0.01" max="230" v-on:click="error_checking" v-on:blur="error_checking" v-on:input="error_checking" v-on:keydown="error_checking" v-on:paste="error_checking" v-bind:value="lm.under_voltage.value_in_unit" id="lm_under_voltage">
+
+
+                        <label for="lm_ct_current">
+                            CT Current
+                        </label>
+                        <input type="number" min="10" step="0.01" max="300" v-on:click="error_checking" v-on:blur="error_checking" v-on:input="error_checking" v-on:keydown="error_checking" v-on:paste="error_checking" v-bind:value="lm.ct_current.value_in_unit" id="lm_ct_current">
+
+
+                        <label for="lm_demand_overload">
+                            Demand Overload
+                        </label>
+                        <input type="number" min="0.1" step="0.01" max="69" v-on:click="error_checking" v-on:blur="error_checking" v-on:input="error_checking" v-on:keydown="error_checking" v-on:paste="error_checking" v-bind:value="lm.demand_overload.value_in_unit" id="lm_demand_overload">
+
+
+                        <label for="lm_pt_voltage">
+                            PT Voltage
+                        </label>
+                        <input type="number" min="2.00" step="0.01" max="230" v-on:click="error_checking" v-on:blur="error_checking" v-on:input="error_checking" v-on:keydown="error_checking" v-on:paste="error_checking" v-bind:value="lm.pt_voltage.value_in_unit" id="lm_pt_voltage">
+
+
+                        <label for="lm_imbalance_voltage">
+                            Imbalance Voltage
+                        </label>
+                        <input type="number" min="2.00" step="0.01" max="230" v-on:click="error_checking" v-on:blur="error_checking" v-on:input="error_checking" v-on:keydown="error_checking" v-on:paste="error_checking" v-bind:value="lm.imbalance_voltage.value_in_unit" id="lm_imbalance_voltage">
+
+
+                        <label for="lm_mdi_exceed">
+                            MDI Exceed
+                        </label>
+                        <input type="number" min="0.1" step="0.01" max="100" v-on:click="error_checking" v-on:blur="error_checking" v-on:input="error_checking" v-on:keydown="error_checking" v-on:paste="error_checking" v-bind:value="lm.mdi_exceed.value_in_unit" id="lm_mdi_exceed">
+
+
+                        <label for="lm_over_current">
+                            Over Current
+                        </label>
+                        <input type="number" min="0.2" step="0.01" max="100" v-on:click="error_checking" v-on:blur="error_checking" v-on:input="error_checking" v-on:keydown="error_checking" v-on:paste="error_checking" v-bind:value="lm.over_current.value_in_unit" id="lm_over_current">
+
+
+                        <label for="lm_tamper_energy">
+                            Tamper Energy
+                        </label>
+                        <input type="number" min="0.1" step="0.01" max="20" v-on:click="error_checking" v-on:blur="error_checking" v-on:input="error_checking" v-on:keydown="error_checking" v-on:paste="error_checking" v-bind:value="lm.tamper_energy.value_in_unit" id="lm_tamper_energy">
+
+
+                        <button type="reset">
+                            Read
+                        </button>
+                        <button type="reset">
+                            Write
+                        </button> 
+                    </form>
+                    <!--end::Form-->
+                </div>                                
+                <div v-if="pm_mdi_bit">
+                    MDI<br>
+                    <div>
+                        <label for="mdi_internval">
+                            MDI Interval
+                        </label>
+                        <select id="mdi_internval">
+                            <option>
+                                1 Min
+                            </option>
+                            <option>
+                                5 Mins
+                            </option>
+                            <option>
+                                6 Mins
+                            </option>
+                            <option>
+                                10 Mins
+                            </option>
+                            <option>
+                                15 Mins
+                            </option>
+                            <option>
+                                20 Mins
+                            </option>
+                            <option>
+                                30 Mins
+                            </option>
+                            <option>
+                                60 Mins
+                            </option>
+                        </select>
+                    </div>
+                    <div>
+                        <label for="auto_reset_date">
+                            Auto MDI Reset Date of Every Month
+                        </label>
+                        <select id="auto_reset_date">
+                            <option>
+                                1 st
+                            </option>
+                            <option>
+                                2 nd
+                            </option>
+                            <option>
+                                3 rd
+                            </option>
+                            <option>
+                                4 th
+                            </option>
+                            <option>
+                                5 th
+                            </option>
+                            <option>
+                                6 th
+                            </option>
+                            <option>
+                                7 th
+                            </option>
+                            <option>
+                                8 th
+                            </option>
+                            <option>
+                                9 th
+                            </option>
+                            <option>
+                                10 th
+                            </option>
+                            <option>
+                                11 th
+                            </option>
+                            <option>
+                                12 th
+                            </option>
+                            <option>
+                                13 th
+                            </option>
+                            <option>
+                                14 th
+                            </option>
+                            <option>
+                                15 th
+                            </option>
+                            <option>
+                                16 th
+                            </option>
+                            <option>
+                                17 th
+                            </option>
+                            <option>
+                                18 th
+                            </option>
+                            <option>
+                                19 th
+                            </option>
+                            <option>
+                                20 th
+                            </option>
+                            <option>
+                                21 th
+                            </option>
+                            <option>
+                                22 th
+                            </option>
+                            <option>
+                                23 th
+                            </option>
+                            <option>
+                                24 th
+                            </option>
+                            <option>
+                                25 th
+                            </option>
+                            <option>
+                                26 th
+                            </option>
+                            <option>
+                                27 th
+                            </option>
+                            <option>
+                                28 th
+                            </option>
+                        </select>
+                    </div>
+                    <div>
+                        <label for="m_timepicker_1">
+                            Manual MDI Reset Time Interval
+                        </label>
+                        <div>
+                            <input type='time' id="m_timepicker_1" placeholder="Select time"/>
+                        </div>
+                    </div>
+                </div>                                
+                <div v-if="pm_load_profile_bit">
+                    LP<br>
+                </div>                                
+                <div v-if="pm_clock_calibration_bit">
+                    CC<br>
+                </div>                                
+                <div v-if="pm_decimal_point_bit">
+                    DP<br>
+                </div>                                
+                <div v-if="pm_energy_bit">
+                    EN<br>
+                </div>                                
+                <div v-if="pm_season_setting_bit">
+                    SE<br>
+                </div>                                
+                <div v-if="pm_tariff_setting_bit">
+                    TS<br>
+                </div>                                
+                <div v-if="pm_season_a_bit">
+                    SA<br>
+                </div>                                
+                <div v-if="pm_season_b_bit">
+                    SB<br>
+                </div>                                
+                <div v-if="pm_season_c_bit">
+                    SC<br>
+                </div>                                
+                <div v-if="pm_season_d_bit">
+                    SD<br>
+                </div>                                
+                <div v-if="pm_calender_setting_bit">
+                    CS<br>
+                </div>                                
+                <div v-if="pm_display_windows_bit">
+                    DW<br>
+                </div>                                
+                <div v-if="pm_power_off_display_bit">
+                    PD<br>
+                </div>                                
+                <div v-if="pm_password_bit">
+                    PS<br>
+                </div>                                
+                <div v-if="pm_cautions_and_errors_bit">
+                    CNE<br>
+                </div>                                
+                <div v-if="monthly_billing_data_bit">
+                    MON<br>
+                        <table id="mon_table">
+                            <tr>
+                                <th>NAME</th>
+                                <th>Tariff_1</th>
+                                <th>Tariff_2</th>
+                                <th>Tariff_3</th>
+                                <th>Tariff_4</th>
+                                <th>Tariff_L</th>
+                            </tr>
+
+
+                            <!-- kwh_absolute -->
+                            <tr>
+                                <td>kwh_absolute</td>
+                                <td>{{mon.kwh_absolute_tariff_1.value}}</td>
+                                <td>{{mon.kwh_absolute_tariff_2.value}}</td>
+                                <td>{{mon.kwh_absolute_tariff_3.value}}</td>
+                                <td>{{mon.kwh_absolute_tariff_4.value}}</td>
+                                <td>{{mon.kwh_absolute_tariff_l.value}}</td>
+                            </tr>
+
+
+                            <!-- kwh_import -->
+                            <tr>
+                                <td>kwh_import</td>
+                                <td>{{mon.kwh_import_tariff_1.value}}</td>
+                                <td>{{mon.kwh_import_tariff_2.value}}</td>
+                                <td>{{mon.kwh_import_tariff_3.value}}</td>
+                                <td>{{mon.kwh_import_tariff_4.value}}</td>
+                                <td>{{mon.kwh_import_tariff_l.value}}</td>
+                            </tr>
+
+
+                            <!-- kwh_export -->
+                            <tr>
+                                <td>kwh_export</td>
+                                <td>{{mon.kwh_export_tariff_1.value}}</td>
+                                <td>{{mon.kwh_export_tariff_2.value}}</td>
+                                <td>{{mon.kwh_export_tariff_3.value}}</td>
+                                <td>{{mon.kwh_export_tariff_4.value}}</td>
+                                <td>{{mon.kwh_export_tariff_l.value}}</td>
+                            </tr>
+
+
+                            <!-- kvarh_absolute -->
+                            <tr>
+                                <td>kvarh_absolute</td>
+                                <td>{{mon.kvarh_absolute_tariff_1.value}}</td>
+                                <td>{{mon.kvarh_absolute_tariff_2.value}}</td>
+                                <td>{{mon.kvarh_absolute_tariff_3.value}}</td>
+                                <td>{{mon.kvarh_absolute_tariff_4.value}}</td>
+                                <td>{{mon.kvarh_absolute_tariff_l.value}}</td>
+                            </tr>
+
+
+                            <!-- kvarh_import -->
+                            <tr>
+                                <td>kvarh_import</td>
+                                <td>{{mon.kvarh_import_tariff_1.value}}</td>
+                                <td>{{mon.kvarh_import_tariff_2.value}}</td>
+                                <td>{{mon.kvarh_import_tariff_3.value}}</td>
+                                <td>{{mon.kvarh_import_tariff_4.value}}</td>
+                                <td>{{mon.kvarh_import_tariff_l.value}}</td>
+                            </tr>
+
+
+                            <!-- kvarh_export -->
+                            <tr>
+                                <td>kvarh_export</td>
+                                <td>{{mon.kvarh_export_tariff_1.value}}</td>
+                                <td>{{mon.kvarh_export_tariff_2.value}}</td>
+                                <td>{{mon.kvarh_export_tariff_3.value}}</td>
+                                <td>{{mon.kvarh_export_tariff_4.value}}</td>
+                                <td>{{mon.kvarh_export_tariff_l.value}}</td>
+                            </tr>
+
+
+                            <!-- kvarh_q1 -->
+                            <tr>
+                                <td>kvarh_q1</td>
+                                <td>{{mon.kvarh_q1_tariff_1.value}}</td>
+                                <td>{{mon.kvarh_q1_tariff_2.value}}</td>
+                                <td>{{mon.kvarh_q1_tariff_3.value}}</td>
+                                <td>{{mon.kvarh_q1_tariff_4.value}}</td>
+                                <td>{{mon.kvarh_q1_tariff_l.value}}</td>
+                            </tr>
+
+
+                            <!-- kvarh_q2 -->
+                            <tr>
+                                <td>kvarh_q2</td>
+                                <td>{{mon.kvarh_q2_tariff_1.value}}</td>
+                                <td>{{mon.kvarh_q2_tariff_2.value}}</td>
+                                <td>{{mon.kvarh_q2_tariff_3.value}}</td>
+                                <td>{{mon.kvarh_q2_tariff_4.value}}</td>
+                                <td>{{mon.kvarh_q2_tariff_l.value}}</td>
+                            </tr>
+
+
+                            <!-- kvarh_q3 -->
+                            <tr>
+                                <td>kvarh_q3</td>
+                                <td>{{mon.kvarh_q3_tariff_1.value}}</td>
+                                <td>{{mon.kvarh_q3_tariff_2.value}}</td>
+                                <td>{{mon.kvarh_q3_tariff_3.value}}</td>
+                                <td>{{mon.kvarh_q3_tariff_4.value}}</td>
+                                <td>{{mon.kvarh_q3_tariff_l.value}}</td>
+                            </tr>
+
+
+                            <!-- kvarh_q4 -->
+                            <tr>
+                                <td>kvarh_q4</td>
+                                <td>{{mon.kvarh_q4_tariff_1.value}}</td>
+                                <td>{{mon.kvarh_q4_tariff_2.value}}</td>
+                                <td>{{mon.kvarh_q4_tariff_3.value}}</td>
+                                <td>{{mon.kvarh_q4_tariff_4.value}}</td>
+                                <td>{{mon.kvarh_q4_tariff_l.value}}</td>
+                            </tr>
+
+                            <!-- kvah_total -->
+                            <tr>
+                                <td>kvah_total</td>
+                                <td>{{mon.kvah_total_tariff_1.value}}</td>
+                                <td>{{mon.kvah_total_tariff_2.value}}</td>
+                                <td>{{mon.kvah_total_tariff_3.value}}</td>
+                                <td>{{mon.kvah_total_tariff_4.value}}</td>
+                                <td>{{mon.kvah_total_tariff_l.value}}</td>
+                            </tr>
+
+
+                            <!-- cumulative_mdi_kw -->
+                            <tr>
+                                <td>cumulative_mdi_kw</td>
+                                <td>{{mon.cumulative_mdi_kw_tariff_1.value}}</td>
+                                <td>{{mon.cumulative_mdi_kw_tariff_2.value}}</td>
+                                <td>{{mon.cumulative_mdi_kw_tariff_3.value}}</td>
+                                <td>{{mon.cumulative_mdi_kw_tariff_4.value}}</td>
+                                <td>{{mon.cumulative_mdi_kw_tariff_l.value}}</td>
+                            </tr>
+
+
+                            <!-- cumulative_mdi_kw_import -->
+                            <tr>
+                                <td>cumulative_mdi_kw_import</td>
+                                <td>{{mon.cumulative_mdi_kw_import_tariff_1.value}}</td>
+                                <td>{{mon.cumulative_mdi_kw_import_tariff_2.value}}</td>
+                                <td>{{mon.cumulative_mdi_kw_import_tariff_3.value}}</td>
+                                <td>{{mon.cumulative_mdi_kw_import_tariff_4.value}}</td>
+                                <td>{{mon.cumulative_mdi_kw_import_tariff_l.value}}</td>
+                            </tr>
+
+
+                            <!-- cumulative_mdi_kw_export -->
+                            <tr>
+                                <td>cumulative_mdi_kw_export</td>
+                                <td>{{mon.cumulative_mdi_kw_export_tariff_1.value}}</td>
+                                <td>{{mon.cumulative_mdi_kw_export_tariff_2.value}}</td>
+                                <td>{{mon.cumulative_mdi_kw_export_tariff_3.value}}</td>
+                                <td>{{mon.cumulative_mdi_kw_export_tariff_4.value}}</td>
+                                <td>{{mon.cumulative_mdi_kw_export_tariff_l.value}}</td>
+                            </tr>
+
+
+                            <!-- cumulative_mdi_kvar -->
+                            <tr>
+                                <td>cumulative_mdi_kvar</td>
+                                <td>{{mon.cumulative_mdi_kvar_tariff_1.value}}</td>
+                                <td>{{mon.cumulative_mdi_kvar_tariff_2.value}}</td>
+                                <td>{{mon.cumulative_mdi_kvar_tariff_3.value}}</td>
+                                <td>{{mon.cumulative_mdi_kvar_tariff_4.value}}</td>
+                                <td>{{mon.cumulative_mdi_kvar_tariff_l.value}}</td>
+                            </tr>
+
+
+                            <!-- cumulative_mdi_kvar_import -->
+                            <tr>
+                                <td>cumulative_mdi_kvar_import</td>
+                                <td>{{mon.cumulative_mdi_kvar_import_tariff_1.value}}</td>
+                                <td>{{mon.cumulative_mdi_kvar_import_tariff_2.value}}</td>
+                                <td>{{mon.cumulative_mdi_kvar_import_tariff_3.value}}</td>
+                                <td>{{mon.cumulative_mdi_kvar_import_tariff_4.value}}</td>
+                                <td>{{mon.cumulative_mdi_kvar_import_tariff_l.value}}</td>
+                            </tr>
+
+
+                            <!-- cumulative_mdi_kvar_export -->
+                            <tr>
+                                <td>cumulative_mdi_kvar_export</td>
+                                <td>{{mon.cumulative_mdi_kvar_export_tariff_1.value}}</td>
+                                <td>{{mon.cumulative_mdi_kvar_export_tariff_2.value}}</td>
+                                <td>{{mon.cumulative_mdi_kvar_export_tariff_3.value}}</td>
+                                <td>{{mon.cumulative_mdi_kvar_export_tariff_4.value}}</td>
+                                <td>{{mon.cumulative_mdi_kvar_export_tariff_l.value}}</td>
+                            </tr>
+
+                            <!-- current_month_mdi_kw -->
+                            <tr>
+                                <td>current_month_mdi_kw</td>
+                                <td>{{mon.current_month_mdi_kw_tariff_1.value}}</td>
+                                <td>{{mon.current_month_mdi_kw_tariff_2.value}}</td>
+                                <td>{{mon.current_month_mdi_kw_tariff_3.value}}</td>
+                                <td>{{mon.current_month_mdi_kw_tariff_4.value}}</td>
+                                <td>{{mon.current_month_mdi_kw_tariff_l.value}}</td>
+                            </tr>
+
+
+                            <!-- current_month_mdi_kw_date_time -->
+                            <tr>
+                                <td>current_month_mdi_kw_date_time</td>
+                                <td>{{mon.current_month_mdi_kw_date_time_tariff_1.value}}</td>
+                                <td>{{mon.current_month_mdi_kw_date_time_tariff_2.value}}</td>
+                                <td>{{mon.current_month_mdi_kw_date_time_tariff_3.value}}</td>
+                                <td>{{mon.current_month_mdi_kw_date_time_tariff_4.value}}</td>
+                                <td>{{mon.current_month_mdi_kw_date_time_tariff_l.value}}</td>
+                            </tr>
+
+
+                            <!-- current_month_mdi_kw_import -->
+                            <tr>
+                                <td>current_month_mdi_kw_import</td>
+                                <td>{{mon.current_month_mdi_kw_import_tariff_1.value}}</td>
+                                <td>{{mon.current_month_mdi_kw_import_tariff_2.value}}</td>
+                                <td>{{mon.current_month_mdi_kw_import_tariff_3.value}}</td>
+                                <td>{{mon.current_month_mdi_kw_import_tariff_4.value}}</td>
+                                <td>{{mon.current_month_mdi_kw_import_tariff_l.value}}</td>
+                            </tr>
+
+
+                            <!-- current_month_mdi_kw_import_date_time -->
+                            <tr>
+                                <td>current_month_mdi_kw_import_date_time</td>
+                                <td>{{mon.current_month_mdi_kw_import_date_time_tariff_1.value}}</td>
+                                <td>{{mon.current_month_mdi_kw_import_date_time_tariff_2.value}}</td>
+                                <td>{{mon.current_month_mdi_kw_import_date_time_tariff_3.value}}</td>
+                                <td>{{mon.current_month_mdi_kw_import_date_time_tariff_4.value}}</td>
+                                <td>{{mon.current_month_mdi_kw_import_date_time_tariff_l.value}}</td>
+                            </tr>
+
+
+                            <!-- current_month_mdi_kw_export -->
+                            <tr>
+                                <td>current_month_mdi_kw_export</td>
+                                <td>{{mon.current_month_mdi_kw_export_tariff_1.value}}</td>
+                                <td>{{mon.current_month_mdi_kw_export_tariff_2.value}}</td>
+                                <td>{{mon.current_month_mdi_kw_export_tariff_3.value}}</td>
+                                <td>{{mon.current_month_mdi_kw_export_tariff_4.value}}</td>
+                                <td>{{mon.current_month_mdi_kw_export_tariff_l.value}}</td>
+                            </tr>
+
+
+                            <!-- current_month_mdi_kw_export_date_time -->
+                            <tr>
+                                <td>current_month_mdi_kw_export_date_time</td>
+                                <td>{{mon.current_month_mdi_kw_export_date_time_tariff_1.value}}</td>
+                                <td>{{mon.current_month_mdi_kw_export_date_time_tariff_2.value}}</td>
+                                <td>{{mon.current_month_mdi_kw_export_date_time_tariff_3.value}}</td>
+                                <td>{{mon.current_month_mdi_kw_export_date_time_tariff_4.value}}</td>
+                                <td>{{mon.current_month_mdi_kw_export_date_time_tariff_l.value}}</td>
+                            </tr>
+
+
+                            <!-- current_month_mdi_kvar -->
+                            <tr>
+                                <td>current_month_mdi_kvar</td>
+                                <td>{{mon.current_month_mdi_kvar_tariff_1.value}}</td>
+                                <td>{{mon.current_month_mdi_kvar_tariff_2.value}}</td>
+                                <td>{{mon.current_month_mdi_kvar_tariff_3.value}}</td>
+                                <td>{{mon.current_month_mdi_kvar_tariff_4.value}}</td>
+                                <td>{{mon.current_month_mdi_kvar_tariff_l.value}}</td>
+                            </tr>
+
+
+                            <!-- current_month_mdi_kvar_date_time -->
+                            <tr>
+                                <td>current_month_mdi_kvar_date_time</td>
+                                <td>{{mon.current_month_mdi_kvar_date_time_tariff_1.value}}</td>
+                                <td>{{mon.current_month_mdi_kvar_date_time_tariff_2.value}}</td>
+                                <td>{{mon.current_month_mdi_kvar_date_time_tariff_3.value}}</td>
+                                <td>{{mon.current_month_mdi_kvar_date_time_tariff_4.value}}</td>
+                                <td>{{mon.current_month_mdi_kvar_date_time_tariff_l.value}}</td>
+                            </tr>
+
+
+                            <!-- current_month_mdi_kvar_import -->
+                            <tr>
+                                <td>current_month_mdi_kvar_import</td>
+                                <td>{{mon.current_month_mdi_kvar_import_tariff_1.value}}</td>
+                                <td>{{mon.current_month_mdi_kvar_import_tariff_2.value}}</td>
+                                <td>{{mon.current_month_mdi_kvar_import_tariff_3.value}}</td>
+                                <td>{{mon.current_month_mdi_kvar_import_tariff_4.value}}</td>
+                                <td>{{mon.current_month_mdi_kvar_import_tariff_l.value}}</td>
+                            </tr>
+
+
+                            <!-- current_month_mdi_kvar_import_date_time -->
+                            <tr>
+                                <td>current_month_mdi_kvar_import_date_time</td>
+                                <td>{{mon.current_month_mdi_kvar_import_date_time_tariff_1.value}}</td>
+                                <td>{{mon.current_month_mdi_kvar_import_date_time_tariff_2.value}}</td>
+                                <td>{{mon.current_month_mdi_kvar_import_date_time_tariff_3.value}}</td>
+                                <td>{{mon.current_month_mdi_kvar_import_date_time_tariff_4.value}}</td>
+                                <td>{{mon.current_month_mdi_kvar_import_date_time_tariff_l.value}}</td>
+                            </tr>
+
+
+                            <!-- current_month_mdi_kvar_export -->
+                            <tr>
+                                <td>current_month_mdi_kvar_export</td>
+                                <td>{{mon.current_month_mdi_kvar_export_tariff_1.value}}</td>
+                                <td>{{mon.current_month_mdi_kvar_export_tariff_2.value}}</td>
+                                <td>{{mon.current_month_mdi_kvar_export_tariff_3.value}}</td>
+                                <td>{{mon.current_month_mdi_kvar_export_tariff_4.value}}</td>
+                                <td>{{mon.current_month_mdi_kvar_export_tariff_l.value}}</td>
+                            </tr>
+
+
+                            <!-- current_month_mdi_kvar_export_date_time -->
+                            <tr>
+                                <td>current_month_mdi_kvar_export_date_time</td>
+                                <td>{{mon.current_month_mdi_kvar_export_date_time_tariff_1.value}}</td>
+                                <td>{{mon.current_month_mdi_kvar_export_date_time_tariff_2.value}}</td>
+                                <td>{{mon.current_month_mdi_kvar_export_date_time_tariff_3.value}}</td>
+                                <td>{{mon.current_month_mdi_kvar_export_date_time_tariff_4.value}}</td>
+                                <td>{{mon.current_month_mdi_kvar_export_date_time_tariff_l.value}}</td>
+                            </tr>
+
+
+
+                            <!-- average_pf -->
+                            <tr>
+                                <td>average_pf</td>
+                                <td>{{mon.average_pf_tariff_1.value}}</td>
+                                <td>{{mon.average_pf_tariff_2.value}}</td>
+                                <td>{{mon.average_pf_tariff_3.value}}</td>
+                                <td>{{mon.average_pf_tariff_4.value}}</td>
+                                <td>{{mon.average_pf_tariff_l.value}}</td>
+                            </tr>
+
+
+                            <!-- pf_abs -->
+                            <tr>
+                                <td>pf_abs</td>
+                                <td>{{mon.pf_abs_tariff_1.value}}</td>
+                                <td>{{mon.pf_abs_tariff_2.value}}</td>
+                                <td>{{mon.pf_abs_tariff_3.value}}</td>
+                                <td>{{mon.pf_abs_tariff_4.value}}</td>
+                                <td>{{mon.pf_abs_tariff_l.value}}</td>
+                            </tr>
+
+
+                            <!-- pf_import -->
+                            <tr>
+                                <td>pf_import</td>
+                                <td>{{mon.pf_import_tariff_1.value}}</td>
+                                <td>{{mon.pf_import_tariff_2.value}}</td>
+                                <td>{{mon.pf_import_tariff_3.value}}</td>
+                                <td>{{mon.pf_import_tariff_4.value}}</td>
+                                <td>{{mon.pf_import_tariff_l.value}}</td>
+                            </tr>
+
+
+                            <!-- pf_export -->
+                            <tr>
+                                <td>pf_export</td>
+                                <td>{{mon.pf_export_tariff_1.value}}</td>
+                                <td>{{mon.pf_export_tariff_2.value}}</td>
+                                <td>{{mon.pf_export_tariff_3.value}}</td>
+                                <td>{{mon.pf_export_tariff_4.value}}</td>
+                                <td>{{mon.pf_export_tariff_l.value}}</td>
+                            </tr>
+
+                            <!-- tamper_energy -->
+                            <tr>
+                                <td>tamper_energy</td>
+                                <td>{{mon.tamper_energy_tariff_1.value}}</td>
+                                <td>{{mon.tamper_energy_tariff_2.value}}</td>
+                                <td>{{mon.tamper_energy_tariff_3.value}}</td>
+                                <td>{{mon.tamper_energy_tariff_4.value}}</td>
+                                <td>{{mon.tamper_energy_tariff_l.value}}</td>
+                            </tr>
+                        </table>
+                </div>                                
+                <div v-if="cummulative_billing_bit">
+                    CUM<br>
+                        <table id="cum_table">
+                            <tr>
+                                <th>NAME</th>
+                                <th>Tariff_1</th>
+                                <th>Tariff_2</th>
+                                <th>Tariff_3</th>
+                                <th>Tariff_4</th>
+                                <th>Tariff_L</th>
+                            </tr>
+
+
+                            <!-- kwh_absolute -->
+                            <tr>
+                                <td>kwh_absolute</td>
+                                <td>{{cum.kwh_absolute_tariff_1.value}}</td>
+                                <td>{{cum.kwh_absolute_tariff_2.value}}</td>
+                                <td>{{cum.kwh_absolute_tariff_3.value}}</td>
+                                <td>{{cum.kwh_absolute_tariff_4.value}}</td>
+                                <td>{{cum.kwh_absolute_tariff_l.value}}</td>
+                            </tr>
+
+
+                            <!-- kwh_import -->
+                            <tr>
+                                <td>kwh_import</td>
+                                <td>{{cum.kwh_import_tariff_1.value}}</td>
+                                <td>{{cum.kwh_import_tariff_2.value}}</td>
+                                <td>{{cum.kwh_import_tariff_3.value}}</td>
+                                <td>{{cum.kwh_import_tariff_4.value}}</td>
+                                <td>{{cum.kwh_import_tariff_l.value}}</td>
+                            </tr>
+
+
+                            <!-- kwh_export -->
+                            <tr>
+                                <td>kwh_export</td>
+                                <td>{{cum.kwh_export_tariff_1.value}}</td>
+                                <td>{{cum.kwh_export_tariff_2.value}}</td>
+                                <td>{{cum.kwh_export_tariff_3.value}}</td>
+                                <td>{{cum.kwh_export_tariff_4.value}}</td>
+                                <td>{{cum.kwh_export_tariff_l.value}}</td>
+                            </tr>
+
+
+                            <!-- kvarh_absolute -->
+                            <tr>
+                                <td>kvarh_absolute</td>
+                                <td>{{cum.kvarh_absolute_tariff_1.value}}</td>
+                                <td>{{cum.kvarh_absolute_tariff_2.value}}</td>
+                                <td>{{cum.kvarh_absolute_tariff_3.value}}</td>
+                                <td>{{cum.kvarh_absolute_tariff_4.value}}</td>
+                                <td>{{cum.kvarh_absolute_tariff_l.value}}</td>
+                            </tr>
+
+
+                            <!-- kvarh_import -->
+                            <tr>
+                                <td>kvarh_import</td>
+                                <td>{{cum.kvarh_import_tariff_1.value}}</td>
+                                <td>{{cum.kvarh_import_tariff_2.value}}</td>
+                                <td>{{cum.kvarh_import_tariff_3.value}}</td>
+                                <td>{{cum.kvarh_import_tariff_4.value}}</td>
+                                <td>{{cum.kvarh_import_tariff_l.value}}</td>
+                            </tr>
+
+
+                            <!-- kvarh_export -->
+                            <tr>
+                                <td>kvarh_export</td>
+                                <td>{{cum.kvarh_export_tariff_1.value}}</td>
+                                <td>{{cum.kvarh_export_tariff_2.value}}</td>
+                                <td>{{cum.kvarh_export_tariff_3.value}}</td>
+                                <td>{{cum.kvarh_export_tariff_4.value}}</td>
+                                <td>{{cum.kvarh_export_tariff_l.value}}</td>
+                            </tr>
+
+
+                            <!-- kvarh_q1 -->
+                            <tr>
+                                <td>kvarh_q1</td>
+                                <td>{{cum.kvarh_q1_tariff_1.value}}</td>
+                                <td>{{cum.kvarh_q1_tariff_2.value}}</td>
+                                <td>{{cum.kvarh_q1_tariff_3.value}}</td>
+                                <td>{{cum.kvarh_q1_tariff_4.value}}</td>
+                                <td>{{cum.kvarh_q1_tariff_l.value}}</td>
+                            </tr>
+
+
+                            <!-- kvarh_q2 -->
+                            <tr>
+                                <td>kvarh_q2</td>
+                                <td>{{cum.kvarh_q2_tariff_1.value}}</td>
+                                <td>{{cum.kvarh_q2_tariff_2.value}}</td>
+                                <td>{{cum.kvarh_q2_tariff_3.value}}</td>
+                                <td>{{cum.kvarh_q2_tariff_4.value}}</td>
+                                <td>{{cum.kvarh_q2_tariff_l.value}}</td>
+                            </tr>
+
+
+                            <!-- kvarh_q3 -->
+                            <tr>
+                                <td>kvarh_q3</td>
+                                <td>{{cum.kvarh_q3_tariff_1.value}}</td>
+                                <td>{{cum.kvarh_q3_tariff_2.value}}</td>
+                                <td>{{cum.kvarh_q3_tariff_3.value}}</td>
+                                <td>{{cum.kvarh_q3_tariff_4.value}}</td>
+                                <td>{{cum.kvarh_q3_tariff_l.value}}</td>
+                            </tr>
+
+
+                            <!-- kvarh_q4 -->
+                            <tr>
+                                <td>kvarh_q4</td>
+                                <td>{{cum.kvarh_q4_tariff_1.value}}</td>
+                                <td>{{cum.kvarh_q4_tariff_2.value}}</td>
+                                <td>{{cum.kvarh_q4_tariff_3.value}}</td>
+                                <td>{{cum.kvarh_q4_tariff_4.value}}</td>
+                                <td>{{cum.kvarh_q4_tariff_l.value}}</td>
+                            </tr>
+
+                            <!-- kvah_total -->
+                            <tr>
+                                <td>kvah_total</td>
+                                <td>{{cum.kvah_total_tariff_1.value}}</td>
+                                <td>{{cum.kvah_total_tariff_2.value}}</td>
+                                <td>{{cum.kvah_total_tariff_3.value}}</td>
+                                <td>{{cum.kvah_total_tariff_4.value}}</td>
+                                <td>{{cum.kvah_total_tariff_l.value}}</td>
+                            </tr>
+
+
+                            <!-- cumulative_mdi_kw -->
+                            <tr>
+                                <td>cumulative_mdi_kw</td>
+                                <td>{{cum.cumulative_mdi_kw_tariff_1.value}}</td>
+                                <td>{{cum.cumulative_mdi_kw_tariff_2.value}}</td>
+                                <td>{{cum.cumulative_mdi_kw_tariff_3.value}}</td>
+                                <td>{{cum.cumulative_mdi_kw_tariff_4.value}}</td>
+                                <td>{{cum.cumulative_mdi_kw_tariff_l.value}}</td>
+                            </tr>
+
+
+                            <!-- cumulative_mdi_kw_import -->
+                            <tr>
+                                <td>cumulative_mdi_kw_import</td>
+                                <td>{{cum.cumulative_mdi_kw_import_tariff_1.value}}</td>
+                                <td>{{cum.cumulative_mdi_kw_import_tariff_2.value}}</td>
+                                <td>{{cum.cumulative_mdi_kw_import_tariff_3.value}}</td>
+                                <td>{{cum.cumulative_mdi_kw_import_tariff_4.value}}</td>
+                                <td>{{cum.cumulative_mdi_kw_import_tariff_l.value}}</td>
+                            </tr>
+
+
+                            <!-- cumulative_mdi_kw_export -->
+                            <tr>
+                                <td>cumulative_mdi_kw_export</td>
+                                <td>{{cum.cumulative_mdi_kw_export_tariff_1.value}}</td>
+                                <td>{{cum.cumulative_mdi_kw_export_tariff_2.value}}</td>
+                                <td>{{cum.cumulative_mdi_kw_export_tariff_3.value}}</td>
+                                <td>{{cum.cumulative_mdi_kw_export_tariff_4.value}}</td>
+                                <td>{{cum.cumulative_mdi_kw_export_tariff_l.value}}</td>
+                            </tr>
+
+
+                            <!-- cumulative_mdi_kvar -->
+                            <tr>
+                                <td>cumulative_mdi_kvar</td>
+                                <td>{{cum.cumulative_mdi_kvar_tariff_1.value}}</td>
+                                <td>{{cum.cumulative_mdi_kvar_tariff_2.value}}</td>
+                                <td>{{cum.cumulative_mdi_kvar_tariff_3.value}}</td>
+                                <td>{{cum.cumulative_mdi_kvar_tariff_4.value}}</td>
+                                <td>{{cum.cumulative_mdi_kvar_tariff_l.value}}</td>
+                            </tr>
+
+
+                            <!-- cumulative_mdi_kvar_import -->
+                            <tr>
+                                <td>cumulative_mdi_kvar_import</td>
+                                <td>{{cum.cumulative_mdi_kvar_import_tariff_1.value}}</td>
+                                <td>{{cum.cumulative_mdi_kvar_import_tariff_2.value}}</td>
+                                <td>{{cum.cumulative_mdi_kvar_import_tariff_3.value}}</td>
+                                <td>{{cum.cumulative_mdi_kvar_import_tariff_4.value}}</td>
+                                <td>{{cum.cumulative_mdi_kvar_import_tariff_l.value}}</td>
+                            </tr>
+
+
+                            <!-- cumulative_mdi_kvar_export -->
+                            <tr>
+                                <td>cumulative_mdi_kvar_export</td>
+                                <td>{{cum.cumulative_mdi_kvar_export_tariff_1.value}}</td>
+                                <td>{{cum.cumulative_mdi_kvar_export_tariff_2.value}}</td>
+                                <td>{{cum.cumulative_mdi_kvar_export_tariff_3.value}}</td>
+                                <td>{{cum.cumulative_mdi_kvar_export_tariff_4.value}}</td>
+                                <td>{{cum.cumulative_mdi_kvar_export_tariff_l.value}}</td>
+                            </tr>
+
+                            <!-- current_month_mdi_kw -->
+                            <tr>
+                                <td>current_month_mdi_kw</td>
+                                <td>{{cum.current_month_mdi_kw_tariff_1.value}}</td>
+                                <td>{{cum.current_month_mdi_kw_tariff_2.value}}</td>
+                                <td>{{cum.current_month_mdi_kw_tariff_3.value}}</td>
+                                <td>{{cum.current_month_mdi_kw_tariff_4.value}}</td>
+                                <td>{{cum.current_month_mdi_kw_tariff_l.value}}</td>
+                            </tr>
+
+
+                            <!-- current_month_mdi_kw_date_time -->
+                            <tr>
+                                <td>current_month_mdi_kw_date_time</td>
+                                <td>{{cum.current_month_mdi_kw_date_time_tariff_1.value}}</td>
+                                <td>{{cum.current_month_mdi_kw_date_time_tariff_2.value}}</td>
+                                <td>{{cum.current_month_mdi_kw_date_time_tariff_3.value}}</td>
+                                <td>{{cum.current_month_mdi_kw_date_time_tariff_4.value}}</td>
+                                <td>{{cum.current_month_mdi_kw_date_time_tariff_l.value}}</td>
+                            </tr>
+
+
+                            <!-- current_month_mdi_kw_import -->
+                            <tr>
+                                <td>current_month_mdi_kw_import</td>
+                                <td>{{cum.current_month_mdi_kw_import_tariff_1.value}}</td>
+                                <td>{{cum.current_month_mdi_kw_import_tariff_2.value}}</td>
+                                <td>{{cum.current_month_mdi_kw_import_tariff_3.value}}</td>
+                                <td>{{cum.current_month_mdi_kw_import_tariff_4.value}}</td>
+                                <td>{{cum.current_month_mdi_kw_import_tariff_l.value}}</td>
+                            </tr>
+
+
+                            <!-- current_month_mdi_kw_import_date_time -->
+                            <tr>
+                                <td>current_month_mdi_kw_import_date_time</td>
+                                <td>{{cum.current_month_mdi_kw_import_date_time_tariff_1.value}}</td>
+                                <td>{{cum.current_month_mdi_kw_import_date_time_tariff_2.value}}</td>
+                                <td>{{cum.current_month_mdi_kw_import_date_time_tariff_3.value}}</td>
+                                <td>{{cum.current_month_mdi_kw_import_date_time_tariff_4.value}}</td>
+                                <td>{{cum.current_month_mdi_kw_import_date_time_tariff_l.value}}</td>
+                            </tr>
+
+
+                            <!-- current_month_mdi_kw_export -->
+                            <tr>
+                                <td>current_month_mdi_kw_export</td>
+                                <td>{{cum.current_month_mdi_kw_export_tariff_1.value}}</td>
+                                <td>{{cum.current_month_mdi_kw_export_tariff_2.value}}</td>
+                                <td>{{cum.current_month_mdi_kw_export_tariff_3.value}}</td>
+                                <td>{{cum.current_month_mdi_kw_export_tariff_4.value}}</td>
+                                <td>{{cum.current_month_mdi_kw_export_tariff_l.value}}</td>
+                            </tr>
+
+
+                            <!-- current_month_mdi_kw_export_date_time -->
+                            <tr>
+                                <td>current_month_mdi_kw_export_date_time</td>
+                                <td>{{cum.current_month_mdi_kw_export_date_time_tariff_1.value}}</td>
+                                <td>{{cum.current_month_mdi_kw_export_date_time_tariff_2.value}}</td>
+                                <td>{{cum.current_month_mdi_kw_export_date_time_tariff_3.value}}</td>
+                                <td>{{cum.current_month_mdi_kw_export_date_time_tariff_4.value}}</td>
+                                <td>{{cum.current_month_mdi_kw_export_date_time_tariff_l.value}}</td>
+                            </tr>
+
+
+                            <!-- current_month_mdi_kvar -->
+                            <tr>
+                                <td>current_month_mdi_kvar</td>
+                                <td>{{cum.current_month_mdi_kvar_tariff_1.value}}</td>
+                                <td>{{cum.current_month_mdi_kvar_tariff_2.value}}</td>
+                                <td>{{cum.current_month_mdi_kvar_tariff_3.value}}</td>
+                                <td>{{cum.current_month_mdi_kvar_tariff_4.value}}</td>
+                                <td>{{cum.current_month_mdi_kvar_tariff_l.value}}</td>
+                            </tr>
+
+
+                            <!-- current_month_mdi_kvar_date_time -->
+                            <tr>
+                                <td>current_month_mdi_kvar_date_time</td>
+                                <td>{{cum.current_month_mdi_kvar_date_time_tariff_1.value}}</td>
+                                <td>{{cum.current_month_mdi_kvar_date_time_tariff_2.value}}</td>
+                                <td>{{cum.current_month_mdi_kvar_date_time_tariff_3.value}}</td>
+                                <td>{{cum.current_month_mdi_kvar_date_time_tariff_4.value}}</td>
+                                <td>{{cum.current_month_mdi_kvar_date_time_tariff_l.value}}</td>
+                            </tr>
+
+
+                            <!-- current_month_mdi_kvar_import -->
+                            <tr>
+                                <td>current_month_mdi_kvar_import</td>
+                                <td>{{cum.current_month_mdi_kvar_import_tariff_1.value}}</td>
+                                <td>{{cum.current_month_mdi_kvar_import_tariff_2.value}}</td>
+                                <td>{{cum.current_month_mdi_kvar_import_tariff_3.value}}</td>
+                                <td>{{cum.current_month_mdi_kvar_import_tariff_4.value}}</td>
+                                <td>{{cum.current_month_mdi_kvar_import_tariff_l.value}}</td>
+                            </tr>
+
+
+                            <!-- current_month_mdi_kvar_import_date_time -->
+                            <tr>
+                                <td>current_month_mdi_kvar_import_date_time</td>
+                                <td>{{cum.current_month_mdi_kvar_import_date_time_tariff_1.value}}</td>
+                                <td>{{cum.current_month_mdi_kvar_import_date_time_tariff_2.value}}</td>
+                                <td>{{cum.current_month_mdi_kvar_import_date_time_tariff_3.value}}</td>
+                                <td>{{cum.current_month_mdi_kvar_import_date_time_tariff_4.value}}</td>
+                                <td>{{cum.current_month_mdi_kvar_import_date_time_tariff_l.value}}</td>
+                            </tr>
+
+
+                            <!-- current_month_mdi_kvar_export -->
+                            <tr>
+                                <td>current_month_mdi_kvar_export</td>
+                                <td>{{cum.current_month_mdi_kvar_export_tariff_1.value}}</td>
+                                <td>{{cum.current_month_mdi_kvar_export_tariff_2.value}}</td>
+                                <td>{{cum.current_month_mdi_kvar_export_tariff_3.value}}</td>
+                                <td>{{cum.current_month_mdi_kvar_export_tariff_4.value}}</td>
+                                <td>{{cum.current_month_mdi_kvar_export_tariff_l.value}}</td>
+                            </tr>
+
+
+                            <!-- current_month_mdi_kvar_export_date_time -->
+                            <tr>
+                                <td>current_month_mdi_kvar_export_date_time</td>
+                                <td>{{cum.current_month_mdi_kvar_export_date_time_tariff_1.value}}</td>
+                                <td>{{cum.current_month_mdi_kvar_export_date_time_tariff_2.value}}</td>
+                                <td>{{cum.current_month_mdi_kvar_export_date_time_tariff_3.value}}</td>
+                                <td>{{cum.current_month_mdi_kvar_export_date_time_tariff_4.value}}</td>
+                                <td>{{cum.current_month_mdi_kvar_export_date_time_tariff_l.value}}</td>
+                            </tr>
+
+
+
+                            <!-- average_pf -->
+                            <tr>
+                                <td>average_pf</td>
+                                <td>{{cum.average_pf_tariff_1.value}}</td>
+                                <td>{{cum.average_pf_tariff_2.value}}</td>
+                                <td>{{cum.average_pf_tariff_3.value}}</td>
+                                <td>{{cum.average_pf_tariff_4.value}}</td>
+                                <td>{{cum.average_pf_tariff_l.value}}</td>
+                            </tr>
+
+
+                            <!-- pf_abs -->
+                            <tr>
+                                <td>pf_abs</td>
+                                <td>{{cum.pf_abs_tariff_1.value}}</td>
+                                <td>{{cum.pf_abs_tariff_2.value}}</td>
+                                <td>{{cum.pf_abs_tariff_3.value}}</td>
+                                <td>{{cum.pf_abs_tariff_4.value}}</td>
+                                <td>{{cum.pf_abs_tariff_l.value}}</td>
+                            </tr>
+
+
+                            <!-- pf_import -->
+                            <tr>
+                                <td>pf_import</td>
+                                <td>{{cum.pf_import_tariff_1.value}}</td>
+                                <td>{{cum.pf_import_tariff_2.value}}</td>
+                                <td>{{cum.pf_import_tariff_3.value}}</td>
+                                <td>{{cum.pf_import_tariff_4.value}}</td>
+                                <td>{{cum.pf_import_tariff_l.value}}</td>
+                            </tr>
+
+
+                            <!-- pf_export -->
+                            <tr>
+                                <td>pf_export</td>
+                                <td>{{cum.pf_export_tariff_1.value}}</td>
+                                <td>{{cum.pf_export_tariff_2.value}}</td>
+                                <td>{{cum.pf_export_tariff_3.value}}</td>
+                                <td>{{cum.pf_export_tariff_4.value}}</td>
+                                <td>{{cum.pf_export_tariff_l.value}}</td>
+                            </tr>
+
+                            <!-- tamper_energy -->
+                            <tr>
+                                <td>tamper_energy</td>
+                                <td>{{cum.tamper_energy_tariff_1.value}}</td>
+                                <td>{{cum.tamper_energy_tariff_2.value}}</td>
+                                <td>{{cum.tamper_energy_tariff_3.value}}</td>
+                                <td>{{cum.tamper_energy_tariff_4.value}}</td>
+                                <td>{{cum.tamper_energy_tariff_l.value}}</td>
+                            </tr>
+                        </table>
+                </div>                                
+                <div v-if="instantaneous_bit">
+                    INT<br>
+                    <div class="row">
+                        <div class="col-3">
+                            <!--begin: Datatable -->
+                            <table id="misc_table">
+                                <thead>
+                                    <tr>
+                                        <th>NAME</th>
+                                        <th>Phase A</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                <tr>
+                                    <td>
+                                        Meter Date
+                                    </td>
+                                    <td>
+                                        {{inst.meter_date.value}}
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        Meter Time
+                                    </td>
+                                    <td>
+                                        {{inst.meter_time.value}}
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        MDI Reset Count
+                                    </td>
+                                    <td>
+                                        {{inst.mdi_reset_count.value}}
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        Running Season
+                                    </td>
+                                    <td>
+                                        {{inst.running_season.value}}
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        Running Tariff
+                                    </td>
+                                    <td>
+                                        {{inst.running_tariff.value}}
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        Frequency(Hz)
+                                    </td>
+                                    <td>
+                                        {{inst.frequency_hz.value}}
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        Time Left Interval
+                                    </td>
+                                    <td>
+                                        {{inst.time_left_interval.value}}
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        Last Interval MDI KW
+                                    </td>
+                                    <td>
+                                        {{inst.last_interval_mdi_kw.value}}
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        Last Interval MDI KW Import
+                                    </td>
+                                    <td>
+                                        {{inst.last_interval_mdi_kw_import.value}}
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        Last Interval MDI KW Export
+                                    </td>
+                                    <td>
+                                        {{inst.last_interval_mdi_kw_export.value}}
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        Tamper Power
+                                    </td>
+                                    <td>
+                                        {{inst.tamper_power.value}}
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        Last Interval MDI KVAr
+                                    </td>
+                                    <td>
+                                        {{inst.last_interval_mdi_kvar.value}}
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        Last Interval MDI KVAr Import
+                                    </td>
+                                    <td>
+                                        {{inst.last_interval_mdi_kvar_import.value}}
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        Last Interval MDI KVAr Export
+                                    </td>
+                                    <td>
+                                        {{inst.last_interval_mdi_kvar_export.value}}
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        Counter
+                                    </td>
+                                    <td>
+                                        {{inst.counter.value}}
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        Slide Count
+                                    </td>
+                                    <td>
+                                        {{inst.slide_count.value}}
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        Slide Counter
+                                    </td>
+                                    <td>
+                                        {{inst.slide_counter.value}}
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        Time Period
+                                    </td>
+                                    <td>
+                                        {{inst.time_period.value}}
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        Time Span Index
+                                    </td>
+                                    <td>
+                                        {{inst.time_span_index.value}}
+                                    </td>
+                                </tr>
+                                </tbody>
+                            </table>
+                            <!--end: Datatable -->
+                        </div>
+                        <div class="col-9">
+                            <!--begin: Datatable -->
+                            <table id="inst_table">
+                                <thead>
+                                    <tr>
+                                        <th>NAME</th>
+                                        <th>Phase A</th>
+                                        <th>Phase B</th>
+                                        <th>Phase C</th>
+                                        <th>TOTAL/AVG</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+
+                                    <tr>
+                                        <td>
+                                            Voltage(V)
+                                        </td>
+                                        <td>
+                                            {{inst.voltage_phase_a.value}}
+                                        </td>
+                                        <td>
+                                            {{inst.voltage_phase_b.value}}
+                                        </td>
+                                        <td>
+                                            {{inst.voltage_phase_c.value}}
+                                        </td>
+                                        <td>
+                                            {{inst.current_all_phases.value}}
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            Current(A)
+                                        </td>
+                                        <td>
+                                            {{inst.current_phase_a.value}}
+                                        </td>
+                                        <td>
+                                            {{inst.current_phase_b.value}}
+                                        </td>
+                                        <td>
+                                            {{inst.current_phase_c.value}}
+                                        </td>
+                                        <td>
+                                            {{inst.active_power_all_phases.value}}
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            Active Power(KW)
+                                        </td>
+                                        <td>
+                                            {{inst.active_power_phase_a.value}}
+                                        </td>
+                                        <td>
+                                            {{inst.active_power_phase_b.value}}
+                                        </td>
+                                        <td>
+                                            {{inst.active_power_phase_c.value}}
+                                        </td>
+                                        <td>
+                                            {{inst.reactive_power_all_phases.value}}
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            Reactive Power(KVAr)
+                                        </td>
+                                        <td>
+                                            {{inst.reactive_power_phase_a.value}}
+                                        </td>
+                                        <td>
+                                            {{inst.reactive_power_phase_b.value}}
+                                        </td>
+                                        <td>
+                                            {{inst.reactive_power_phase_c.value}}
+                                        </td>
+                                        <td>
+                                            {{inst.apparent_power_all_phases.value}}
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            Apparent Power(KVA)
+                                        </td>
+                                        <td>
+                                            {{inst.apparent_power_phase_a.value}}
+                                        </td>
+                                        <td>
+                                            {{inst.apparent_power_phase_b.value}}
+                                        </td>
+                                        <td>
+                                            {{inst.apparent_power_phase_c.value}}
+                                        </td>
+                                        <td>
+                                            {{inst.power_factor_all_phases.value}}
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            Power Factor
+                                        </td>
+                                        <td>
+                                            {{inst.power_factor_phase_a.value}}
+                                        </td>
+                                        <td>
+                                            {{inst.power_factor_phase_b.value}}
+                                        </td>
+                                        <td>
+                                            {{inst.power_factor_phase_c.value}}
+                                        </td>
+                                        <td>
+                                            {{inst.power_quadrant_all_phases.value}}
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            Power Quandrant
+                                        </td>
+                                        <td>
+                                            {{inst.power_quadrant_phase_a.value}}
+                                        </td>
+                                        <td>
+                                            {{inst.power_quadrant_phase_b.value}}
+                                        </td>
+                                        <td>
+                                            {{inst.power_quadrant_phase_c.value}}
+                                        </td>
+                                        <td>
+                                            {{inst.active_current_month_mdi_t_1.value}}
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <!--end: Datatable -->
+                            <!--begin: Datatable -->
+                            <table id="curr_mdi_table">
+                                <thead>
+                                    <tr>
+                                        <th>NAME</th>
+                                        <th>Tariff 1</th>
+                                        <th>Tariff 2</th>
+                                        <th>Tariff 3</th>
+                                        <th>Tariff 4</th>
+                                        <th>Tariff L</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>Current Month Active MDI</td>
+                                        <td>
+                                            {{inst.active_current_month_mdi_t_1.value}}
+                                        </td>
+                                        <td>
+                                            {{inst.active_current_month_mdi_t_2.value}}
+                                        </td>
+                                        <td>
+                                            {{inst.active_current_month_mdi_t_3.value}}
+                                        </td>
+                                        <td>
+                                            {{inst.active_current_month_mdi_t_4.value}}
+                                        </td>
+                                        <td>
+                                            {{inst.active_current_month_mdi_t_L.value}}
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>Current Month Reactive MDI</td>
+                                        <td>
+                                            {{inst.reactive_current_month_mdi_t_1.value}}
+                                        </td>
+                                        <td>
+                                            {{inst.reactive_current_month_mdi_t_2.value}}
+                                        </td>
+                                        <td>
+                                            {{inst.reactive_current_month_mdi_t_3.value}}
+                                        </td>
+                                        <td>
+                                            {{inst.reactive_current_month_mdi_t_4.value}}
+                                        </td>
+                                        <td>
+                                            {{inst.reactive_current_month_mdi_t_L.value}}
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <!--end: Datatable -->
+                            <!--begin: Datatable -->
+                            <table id="run_mdi_table">
+                                <thead>
+                                    <tr>
+                                        <th>NAME</th>
+                                        <th>Slide 1</th>
+                                        <th>Slide 2</th>
+                                        <th>Slide 3</th>
+                                        <th>Slide 4</th>
+                                        <th>Slide 5</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>Running Active MDI KW</td>
+                                        <td>
+                                            {{inst.active_mdi_kw_slide_1.value}}
+                                        </td>
+                                        <td>
+                                            {{inst.active_mdi_kw_slide_2.value}}
+                                        </td>
+                                        <td>
+                                            {{inst.active_mdi_kw_slide_3.value}}
+                                        </td>
+                                        <td>
+                                            {{inst.active_mdi_kw_slide_4.value}}
+                                        </td>
+                                        <td>
+                                            {{inst.active_mdi_kw_slide_5.value}}
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>Running Active MDI KW Import</td>
+                                        <td>
+                                            {{inst.active_mdi_kw_import_slide_1.value}}
+                                        </td>
+                                        <td>
+                                            {{inst.active_mdi_kw_import_slide_2.value}}
+                                        </td>
+                                        <td>
+                                            {{inst.active_mdi_kw_import_slide_3.value}}
+                                        </td>
+                                        <td>
+                                            {{inst.active_mdi_kw_import_slide_4.value}}
+                                        </td>
+                                        <td>
+                                            {{inst.active_mdi_kw_import_slide_5.value}}
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>Running Active MDI KW Export</td>
+                                        <td>
+                                            {{inst.active_mdi_kw_export_slide_1.value}}
+                                        </td>
+                                        <td>
+                                            {{inst.active_mdi_kw_export_slide_2.value}}
+                                        </td>
+                                        <td>
+                                            {{inst.active_mdi_kw_export_slide_3.value}}
+                                        </td>
+                                        <td>
+                                            {{inst.active_mdi_kw_export_slide_4.value}}
+                                        </td>
+                                        <td>
+                                            {{inst.active_mdi_kw_export_slide_5.value}}
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>Running Reactive MDI Kvar</td>
+                                        <td>
+                                            {{inst.reactive_mdi_kvar_slide_1.value}}
+                                        </td>
+                                        <td>
+                                            {{inst.reactive_mdi_kvar_slide_2.value}}
+                                        </td>
+                                        <td>
+                                            {{inst.reactive_mdi_kvar_slide_3.value}}
+                                        </td>
+                                        <td>
+                                            {{inst.reactive_mdi_kvar_slide_4.value}}
+                                        </td>
+                                        <td>
+                                            {{inst.reactive_mdi_kvar_slide_5.value}}
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>Running Reactive MDI Kvar Import</td>
+                                        <td>
+                                            {{inst.reactive_mdi_kvar_import_slide_1.value}}
+                                        </td>
+                                        <td>
+                                            {{inst.reactive_mdi_kvar_import_slide_2.value}}
+                                        </td>
+                                        <td>
+                                            {{inst.reactive_mdi_kvar_import_slide_3.value}}
+                                        </td>
+                                        <td>
+                                            {{inst.reactive_mdi_kvar_import_slide_4.value}}
+                                        </td>
+                                        <td>
+                                            {{inst.reactive_mdi_kvar_import_slide_5.value}}
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>Running Reactive MDI Kvar export</td>
+                                        <td>
+                                            {{inst.reactive_mdi_kvar_export_slide_1.value}}
+                                        </td>
+                                        <td>
+                                            {{inst.reactive_mdi_kvar_export_slide_2.value}}
+                                        </td>
+                                        <td>
+                                            {{inst.reactive_mdi_kvar_export_slide_3.value}}
+                                        </td>
+                                        <td>
+                                            {{inst.reactive_mdi_kvar_export_slide_4.value}}
+                                        </td>
+                                        <td>
+                                            {{inst.reactive_mdi_kvar_export_slide_5.value}}
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <!--end: Datatable -->
+                        </div>
+                    </div>
+                </div>                                
+                <div v-if="load_profile_bit">
+                    LP<br>
+                </div>                                
+                <div v-if="event_bit">
+                    EV<br>
+                </div>                                
+                <div v-if="pm_default_parameters_bit">
+                    DP<br>
+                </div>                                
+            </div>
+        </div>
+
+    </div>
+
+
+    <!-- begin::Quick Nav -->
+    <!--begin::Base Scripts -->
+    <script type="text/javascript" src="vue.js"></script>
+    <script src="assets/vendors/base/vendors.bundle.js" type="text/javascript"></script>
+    <script src="assets/demo/default/base/scripts.bundle.js" type="text/javascript"></script>
+    <!--end::Base Scripts -->
+    <!--begin::Page Resources -->
+    <script src="assets/demo/default/custom/components/datatables/base/html-table.js" type="text/javascript"></script>
+    <!--end::Page Resources -->
+
+    <!--begin::Page Resources -->
+    <script src="assets/demo/default/custom/components/forms/widgets/bootstrap-timepicker.js" type="text/javascript"></script>
+    <!--end::Page Resources -->
+    <!--begin::Page Vendors -->
+    <script src="assets/vendors/custom/fullcalendar/fullcalendar.bundle.js" type="text/javascript"></script>
+    <!--end::Page Vendors -->
+    <!--begin::Page Snippets -->
+    <script src="assets/app/js/dashboard.js" type="text/javascript"></script>
+    <!--end::Page Snippets -->
+    <script src="assets/demo/default/custom/components/base/treeview.js" type="text/javascript"></script>
+
+
+    <script type="text/javascript" src="body.js"></script>
+
+</body>
+<!-- end::Body -->
+
+</html>

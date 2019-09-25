@@ -9,3 +9,96 @@
 .m-datatable tbody tr td:nth-child(1){
 	padding-left: 50px !important;
 }
+
+/*div{
+	border:1px solid;
+	padding: 1px;
+}*/
+
+
+table{
+	margin: 5px 0px;
+}
+
+#inst_table td , th{
+	padding: 2px 10x;
+	border: 1px black solid;
+	width: 100px;
+	text-align: center;
+}
+
+#inst_table tr td:nth-child(1){
+	width: 180px;
+	text-align: left;
+	padding: 2px 10px;
+}
+
+#curr_mdi_table td , th{
+	padding: 2px 10x;
+	border: 1px black solid;
+	width: 100px;
+	text-align: center;
+}
+
+#curr_mdi_table tr td:nth-child(1){
+	width: 220px;
+	text-align: left;
+	padding: 2px 10px;
+}
+
+#run_mdi_table td , th{
+	padding: 2px 3px;
+	border: 1px black solid;
+	width: 100px;
+	text-align: center;
+}
+
+#run_mdi_table tr td:nth-child(1){
+	width: 250px;
+	text-align: left;
+	padding: 2px 10px;
+}
+
+
+#misc_table td , th{
+	padding: 2px 3px;
+	border: 1px black solid;
+	width: auto;
+	text-align: center;
+}
+
+#misc_table tr td:nth-child(1){
+	width: 220px;
+	text-align: left;
+	padding: 2px 5px;
+}
+
+#cum_table td , th{
+	margin: 0px;
+	padding: 0px 3px;
+	border: 1px black solid;
+	width: 100px;
+	text-align: center;
+}
+
+#cum_table tr td:nth-child(1){
+	margin: 0px;
+	width: 220px;
+	text-align: left;
+	padding: 0px 5px;
+}
+
+#mon_table td , th{
+	margin: 0px;
+	padding: 0px 3px;
+	border: 1px black solid;
+	width: 100px;
+	text-align: center;
+}
+
+#mon_table tr td:nth-child(1){
+	margin: 0px;
+	width: 220px;
+	text-align: left;
+	padding: 0px 5px;
+}
